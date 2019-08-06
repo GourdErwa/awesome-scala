@@ -10,10 +10,10 @@
 * [scala-lang-style](https://docs.scala-lang.org/style/)
 
 ## scala-style-guide
-* [Databricks Scala Coding Style Guide](https://github.com/databricks/scala-style-guide)
+* [databricks Scala Coding Style Guide](https://github.com/databricks/scala-style-guide)
 
 ## 第三方资源
 * [twitter-effective-scala](http://twitter.github.io/effectivescala/index-cn.html)
 * [李浩毅StrategicScalaStyle-列举了面对各种状况下应该选择的语言功能](http://www.lihaoyi.com/post/StrategicScalaStylePrincipleofLeastPower.html)
 * [underscore.io-开源scala相关书籍](https://underscore.io/training/)
-* [underscore.io-shapeless-guide](https://underscore.io/books/shapeless-guide/)
+* [underscore.io-shapeless-guide-Scala泛型编程库](https://underscore.io/books/shapeless-guide/)
