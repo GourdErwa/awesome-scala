@@ -30,7 +30,7 @@ object MyApp {
       User("Jennifer", 44),
       User("Dennis", 23))
 
-    val twentySomethings = for (user <- userBase if (user.age >= 20 && user.age < 30)) yield user.name
+    val twentySomethings = for (user <- userBase if user.age >= 20 && user.age < 30) yield user.name
 
     twentySomethings.foreach(name => logger.info(name)) // prints Travis Dennis
   }

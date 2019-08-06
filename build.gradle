@@ -5,7 +5,6 @@
  * For more details take a look at the Scala plugin chapter in the Gradle
  * User Manual available at https://docs.gradle.org/5.5.1/userguide/scala_plugin.html
  */
-
 buildscript {
 
     apply plugin: "idea"
@@ -32,10 +31,8 @@ subprojects {
     apply plugin: 'java'
     apply plugin: 'scala'
 
-
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
-
 
     repositories {
         mavenLocal()
@@ -54,7 +51,7 @@ subprojects {
 
         // Use Scalatest for testing our library
         testImplementation "junit:junit:4.12"
-        testImplementation "org.scalatest:scalatest_sjs1.0.0-M8_2.13:3.1.0-SNAP13"
+        //testImplementation "org.scalatest:scalatest_sjs1.0.0-M8_2.13:3.1.0-SNAP13"
 
     }
     tasks.withType(JavaCompile) {

@@ -31,7 +31,7 @@ object ShapelessApp {
   // genericIceCream: String :: Int :: Boolean :: shapeless.HNil = Sundae :: 1 :: false :: HNil
 
   // def genericCsv(gen: String :: Int :: Boolean :: HNil): List[String] =
-    // List(gen(0), gen(1).toString, gen(2).toString)
+  // List(gen(0), gen(1).toString, gen(2).toString)
 
   // genericCsv(genericEmployee)
   // res2: List[String] = List(Dave, 123, false)

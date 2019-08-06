@@ -1,7 +1,7 @@
 package com.gourd.scala.cats
 
-import org.slf4j.LoggerFactory
 import cats.Show
+import org.slf4j.LoggerFactory
 
 /**
   * @author Li.Wei by 2019-08-06
@@ -11,7 +11,7 @@ object ExampleShow {
   private val logger = LoggerFactory.getLogger("ExampleShow")
 
   def main(args: Array[String]): Unit = {
-    logger.info(s"java toString:${(new {}.toString)}") // res0: String = $anon$1@8932960
+    logger.info(s"java toString:${new {}.toString}") // res0: String = $anon$1@8932960
 
     import cats.implicits._
     {

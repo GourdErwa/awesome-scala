@@ -28,7 +28,7 @@ object MyApp {
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     val customer2ID = MyApp("Nico")
     val MyApp(name) = customer2ID
-    println(name)  // prints Nico
+    println(name) // prints Nico
     //上面的代码等价于 val name = MyApp.unapply(customer2ID).get
 
   }
