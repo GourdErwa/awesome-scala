@@ -24,6 +24,7 @@ package com.gourd.scala.base
   * @author Li.Wei by 2019-08-06
   */
 package object unified_types {
+
   val list: List[Any] = List(
     "a string",
     732, // an integer

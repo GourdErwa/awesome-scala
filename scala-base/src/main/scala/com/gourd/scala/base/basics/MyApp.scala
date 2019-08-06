@@ -1,15 +1,20 @@
 package com.gourd.scala.base.basics
 
+import org.slf4j.LoggerFactory
+
 /**
+  * Scala的基础知识。
+  *
   * @author Li.Wei by 2019-08-06
   */
-object Basics {
+object MyApp {
+  private val logger = LoggerFactory.getLogger("MyApp")
 
-  def main(args: Array[String]): Unit = {
+  def main(args: Array[String]): Unit = {}
 
-  }
 
-  def expressions(): Unit = {
+  // 表达式
+  {
     println(1) // 1
     println(1 + 1) // 2
     println("Hello!") // Hello!
@@ -23,7 +28,8 @@ object Basics {
     (x: Int) => x + 1
   }
 
-  def function(): Unit = {
+  // 函数
+  {
     val addOne = (x: Int) => x + 1
     println(addOne(1)) // 2
 
@@ -34,7 +40,8 @@ object Basics {
     println(getTheAnswer()) // 42
   }
 
-  def methods(): Unit = {
+  // 方法
+  {
     def add(x: Int, y: Int): Int = x + y
 
     println(add(1, 2)) // 3
@@ -52,6 +59,5 @@ object Basics {
       square.toString
     }
   }
-
 
 }
