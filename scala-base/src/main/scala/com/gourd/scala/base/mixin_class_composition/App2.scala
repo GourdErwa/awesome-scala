@@ -3,9 +3,6 @@ package com.gourd.scala.base.mixin_class_composition
 import org.slf4j.LoggerFactory
 
 /**
-  * 类型 Unit 的值 () 在概念上与类型 Tuple0 的值 () 相同。 Tuple0 只能有一个值，因为它没有元素。
-  * 用户有时可能在元组和 case 类之间难以选择。 通常，如果元素具有更多含义，则首选 case 类
-  *
   * @author Li.Wei by 2019-08-06
   */
 object App2 {

@@ -20,9 +20,7 @@ object MyApp {
     logger.info(s"$res") // 55
 
     // 单一的函数参数
-    numbers.foldLeft(0) { (m: Int, n: Int) => m * n }
-    numbers./:(0) { (m: Int, n: Int) => m * n } // /:是foldLeft的符号表示
-
+    val r1 = numbers.foldLeft(0) { (m: Int, n: Int) => m * n }
 
     // 注意使用多参数列表时，我们还可以利用Scala的类型推断来让代码更加简洁（如下所示），而如果没有多参数列表，这是不可能的。
     // numbers.foldLeft(0)(_ + _)
