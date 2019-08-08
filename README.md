@@ -13,11 +13,14 @@ scala 基础、常用类库使用
 ## 模块命名
 - `scala-app-${lib-name}` 模块为第三方类库应用实例
 ## 模块说明
-* [scala-base：基础入门](./scala-base)
-* [scala-break-through-notes：scala 细节知识笔记](./scala-break-through-notes)
-* [scala-app-json：scala JSON相关操作](./scala-app-json)
-* [scala-app-shapeless：scala shapeless 库相关操作](./scala-app-shapeless)
-* [scala-app-cats：scala shapeless 库相关操作](./scala-app-cats)
+|模块|说明|
+|:---|:---|
+|[scala-base](./scala-base)|基础入门|
+|[scala-break-through-notes](./scala-break-through-notes)|细节知识笔记|
+|[scala-app-json](./scala-app-json)|JSON相关操作|
+|[scala-app-shapeless](./scala-app-shapeless)|shapeless 库相关操作|
+|[scala-app-cats](./scala-app-cats)|cats 库相关操作|
+
 ## 编码风格
 * 模块内容参考模块下`README.md`文件声明
 * 包内容参考 `package` 注释说明
