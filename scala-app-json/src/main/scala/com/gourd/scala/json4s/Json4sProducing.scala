@@ -1,22 +1,12 @@
-package com.gourd.scala.json4s
+package com.gourd.scala
+package json4s
 
 import org.json4s.JsonDSL._
 import org.json4s.jackson.JsonMethods._
 import org.slf4j.LoggerFactory
 
 /** Producing JSON
-  *
-  * DoubleMode 将浮点型数据转换成JDouble，这种方式下DSL使用：
-  * {{{
-  * import org.json4s.JsonDSL._
-  * // or
-  * import org.json4s.JsonDSL.WithDouble._
-  * }}}
-  *
-  * BigDecimalMode 将浮点型数据转换成JDecimal，这种方式下DSL使用：
-  * {{{
-  * import org.json4s.JsonDSL.WithBigDecimal._
-  * }}}
+  * JValue => json str
   *
   * @author Li.Wei by 2019-08-08
   */
@@ -26,7 +16,7 @@ object Json4sProducing {
 
   def main(args: Array[String]): Unit = {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////
-    // 默认DSL规则
+    // 默认 DSL 规则
     ///////////////////////////////////////////////////////////////////////////////////////////////////////
     {
       /*
@@ -68,17 +58,11 @@ object Json4sProducing {
                 (("winner-id" -> w.id) ~
                   ("numbers" -> w.numbers))
               }))
-
       logger.info(compact(render(json)))
       /*
        {"lotto":{"lotto-id":5,"winning-numbers":[2,45,34,23,7,5,3],
        "winners":[{"winner-id":23,"numbers":[2,45,34,23,3,5]},{"winner-id":54,"numbers":[52,3,12,11,18,22]}]}}
        */
-
-
     }
-
   }
-
-
 }

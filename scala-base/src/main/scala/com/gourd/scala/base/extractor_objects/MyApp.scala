@@ -25,7 +25,9 @@ object MyApp {
       case MyApp(name) => println(name) // prints SukYoung
       case _ => println("Could not extract a CustomerID")
     }
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+    // unapply
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////
     val customer2ID = MyApp("Nico")
     val MyApp(name) = customer2ID
     println(name) // prints Nico

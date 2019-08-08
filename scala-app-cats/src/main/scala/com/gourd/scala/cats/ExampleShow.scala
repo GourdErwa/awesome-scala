@@ -3,7 +3,8 @@ package com.gourd.scala.cats
 import cats.Show
 import org.slf4j.LoggerFactory
 
-/**
+/** [[Show]]
+  *
   * @author Li.Wei by 2019-08-06
   */
 object ExampleShow {

@@ -1,4 +1,5 @@
-package com.gourd.scala.cats
+package com.gourd.scala
+package cats
 
 import org.slf4j.LoggerFactory
 

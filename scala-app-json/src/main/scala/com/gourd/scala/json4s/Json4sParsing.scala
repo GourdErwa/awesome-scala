@@ -1,8 +1,9 @@
-package com.gourd.scala.json4s
+package com.gourd.scala
+package json4s
 
 import org.slf4j.LoggerFactory
 
-/** Parsing JSON
+/** Parsing JSON => JValue
   *
   * @author Li.Wei by 2019-08-08
   */
@@ -25,6 +26,5 @@ object Json4sParsing {
     }
 
   }
-
 
 }
