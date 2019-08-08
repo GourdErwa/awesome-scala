@@ -1,5 +1,12 @@
 # scala-advanced
 
+# 构建环境
+- Gradle 5.5.1
+- Java 11
+- Scala 2.13.0
+> 说明：
+> - 项目依赖scala包需2.13.0版本编译，避免因版本差异导致 ClassNotFoundException 异常
+
 # 参考资源
 ## 官方文档
 * [scala-lang-基础入门](https://docs.scala-lang.org/zh-cn/tour/tour-of-scala.html)

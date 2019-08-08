@@ -12,4 +12,4 @@ include 'scala-base'
 
 include 'scala-app-shapeless'
 include 'scala-app-cats'
-
+include 'scala-app-json'

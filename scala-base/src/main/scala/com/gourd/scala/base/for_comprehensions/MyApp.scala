@@ -42,8 +42,7 @@ object MyApp {
     def foo(n: Int, v: Int) = for (i <- 0 until n; j <- i until n if i + j == v) yield (i, j)
 
     foo(10, 10) foreach {
-      case (i, j) =>
-        logger.info(s"($i, $j) ") // prints (1, 9) (2, 8) (3, 7) (4, 6) (5, 5)
+      case (i, j) => logger.info(s"($i, $j) ") // prints (1, 9) (2, 8) (3, 7) (4, 6) (5, 5)
     }
     /*
       这里 n == 10 和 v == 10。在第一次迭代时，i == 0 并且 j == 0 所以 i + j != v 因此没有返回值被生成。

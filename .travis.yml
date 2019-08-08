@@ -2,7 +2,5 @@ install: Gradle
 script: Gradle
 language: scala
 scala:
-  - 2.9.3
-  - 2.10.6
-  - 2.11.11
-  - 2.12.2
+  - 2.12.8
+  - 2.13.0
