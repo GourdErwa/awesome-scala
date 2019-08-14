@@ -3,6 +3,7 @@ package com.gourd.scala.base.case_classes
 import org.slf4j.LoggerFactory
 
 /**
+  * 案例类
   * 案例类（Case classes）和普通类差不多，只有几点关键差别，接下来的介绍将会涵盖这些差别。
   * 案例类非常适合用于不可变的数据
   *
@@ -11,9 +12,7 @@ import org.slf4j.LoggerFactory
 object MyApp {
   private val logger = LoggerFactory.getLogger("MyApp")
 
-  def main(args: Array[String]): Unit = {
-
-  }
+  def main(args: Array[String]): Unit = {}
 
   // 定义一个案例类 ， 默认为 val 不可变类型
   case class Message(val sender: String, var recipient: String, body: String = "default val")
@@ -22,7 +21,7 @@ object MyApp {
   val message1 = Message("guillaume@quebec.ca", "jorge@catalonia.es", "Ça va ?") // 实例化
 
   println(message1.sender) // prints guillaume@quebec.ca
-  // 你不能给message1.sender重新赋值，因为它是一个val（不可变）。在案例类中使用var也是可以的，但并不推荐这样
+  // 不能给message1.sender重新赋值，因为它是一个val（不可变）。在案例类中使用var也是可以的，但并不推荐这样
   // message1.sender = "travis@washington.us" // this line does not compile
 
   // 比较

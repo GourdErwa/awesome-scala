@@ -32,3 +32,7 @@
 原型的例子：Seq[+A]，Option[+A]，Future[+T]
 - 如果需要返回泛型时，则它不能是逆变的。
 原型的例子：Function1[-T1, +R]，CanBuildFrom[-From, -Elem, +To]，OutputChannel[-Msg]
+
+## 衍生知识
+
+[Understanding F[_] in Scala](https://medium.com/bigpanda-engineering/understanding-f-in-scala-4bec5996761f)
