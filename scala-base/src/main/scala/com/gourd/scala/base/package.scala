@@ -1,7 +1,7 @@
 package com.gourd.scala
 
-/**
-  * https://docs.scala-lang.org/zh-cn/tour/tour-of-scala.html
+/** Scala基础-语言核心特性
+  * 官方文档：https://docs.scala-lang.org/zh-cn/tour/tour-of-scala.html
   *
   * 基础&类型推断&运算符&传名参数&默认参数值&命名参数    [[com.gourd.scala.base.basics]]
   * 统一类型                                      [[com.gourd.scala.base.unified_types]]
@@ -26,7 +26,8 @@ package com.gourd.scala
   * 多态方法                      [[com.gourd.scala.base.polymorphic_methods]]
   * 注解                          [[com.gourd.scala.base.annotations]]
   * 包和导入                      [[com.gourd.scala.base.packages_and_imports]]
-  * 包对象                      [[com.gourd.scala.base.package_objects]]
+  * 包对象                        [[com.gourd.scala.base.package_objects]]
+  * examples（工具类使用示例）       [[com.gourd.scala.base.examples]]
   *
   * @author Li.Wei by 2019-08-06
   */

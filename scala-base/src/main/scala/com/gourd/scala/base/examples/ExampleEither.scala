@@ -2,8 +2,10 @@ package com.gourd.scala.base.examples
 
 import org.slf4j.LoggerFactory
 
-/**
-  * [[Either]]
+/** [[Either]]
+  * 程序设计中经常会有这样的需求，一个函数（或方法）在传入不同参数时会返回不同的值。
+  * 返回值是两个不相关的类型，分别为： Left 和 Right 。
+  * 惯例中我们一般认为 Left 包含错误或无效值， Right包含正确或有效值。
   *
   * @author Li.Wei by 2019-08-06
   */

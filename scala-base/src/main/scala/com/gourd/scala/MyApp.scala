@@ -1,4 +1,4 @@
-package com.gourd.scala.base
+package com.gourd.scala
 
 import org.slf4j.LoggerFactory
 

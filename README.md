@@ -27,12 +27,14 @@ scala 基础、常用类库使用
 
 # 参考资源
 ## 官方文档
-* [scala-lang-基础入门](https://docs.scala-lang.org/zh-cn/tour/tour-of-scala.html)
-* [scala-lang-核心库](https://docs.scala-lang.org/zh-cn/overviews/)
+* [scala-lang-语言核心特性](https://docs.scala-lang.org/zh-cn/tour/tour-of-scala.html)
+* [scala-lang-特性深度分析](https://docs.scala-lang.org/zh-cn/overviews/)
 * [scala-lang-java基础快速快速入门](https://docs.scala-lang.org/zh-tw/tutorials/scala-for-java-programmers.html)
-* [scala-lang-ScalaDoc](https://docs.scala-lang.org/overviews/scaladoc/for-library-authors.html)
-* [scala-lang-cheatsheets](https://docs.scala-lang.org/zh-cn/cheatsheets/index.html)
-* [scala-lang-style](https://docs.scala-lang.org/style/)
+* [scala-lang-语法速查](https://docs.scala-lang.org/zh-cn/cheatsheets/index.html)
+* [scala-lang-代码风格引导](https://docs.scala-lang.org/style/)
+* [scala-lang-api](https://docs.scala-lang.org/api/all.html)
+* [scala-lang-常见问题及答案](https://docs.scala-lang.org/tutorials/FAQ/index.html)
+
 
 ## scala-style-guide
 * [databricks Scala Coding Style Guide](https://github.com/databricks/scala-style-guide)
