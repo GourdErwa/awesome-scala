@@ -11,11 +11,12 @@ scala 基础、常用类库使用
 
 # 项目结构
 ## 模块命名
+- `scala-base` scala语言基础
 - `scala-app-${lib-name}` 模块为第三方类库应用实例
 ## 模块说明
 |模块|说明|
 |:---|:---|
-|[scala-base](./scala-base)|基础入门|
+|[scala-base](./scala-base)|语言核心特性，特性深度分析示例|
 |[scala-break-through-notes](./scala-break-through-notes)|细节知识笔记|
 |[scala-app-json](./scala-app-json)|JSON相关操作|
 |[scala-app-shapeless](./scala-app-shapeless)|shapeless 库相关操作|
