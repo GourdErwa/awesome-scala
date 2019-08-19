@@ -16,7 +16,7 @@ package com.gourd.scala
   * 正则表达式                       [[com.gourd.scala.base.regular_expression_patterns]]
   * 对象提取器                       [[com.gourd.scala.base.extractor_objects]]
   * For 表达式                      [[com.gourd.scala.base.for_comprehensions]]
-  * 泛型类&型变&类型上下界             [[com.gourd.scala.base.generic_classes]]
+  * 泛型类&类型上下界&协变/逆变/不变    [[com.gourd.scala.base.generic_classes]]
   * 内部类                           [[com.gourd.scala.base.inner_classes]]
   * 抽象类型                        [[com.gourd.scala.base.abstract_type_members]]
   * 复合类型                        [[com.gourd.scala.base.compound_types]]

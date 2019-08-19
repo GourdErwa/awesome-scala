@@ -42,14 +42,17 @@ object Json4sSerialization {
       (startDt: Date = new Date(), // 默认为昨天 dt
        endDt: Date = new Date(), // 默认为今天 dt
        calculatePriority: Int = -1, // 处理优先级 ， -1 表示忽略
-       includeAppIds: Array[String] = Array(),
-       excludeAppIds: Array[String] = Array(),
-       includeTasks: Array[String] = Array(),
-       excludeTasks: Array[String] = Array(),
-       otherParameters: Map[String, String] = Map(),
-       elasticSetting: ElasticSetting = ElasticSetting()
-      ) {}
-      case class ElasticSetting(delHistoricalData: Boolean = false)
+       includeAppIds: Array[String] = Array.empty,
+       excludeAppIds: Array[String] = Array.empty,
+       includeTasks: Array[String] = Array.empty,
+       excludeTasks: Array[String] = Array.empty,
+       elasticJobSetting: ElasticJobSetting = ElasticJobSetting()
+      )
+
+      case class ElasticJobSetting(includeTypes: Array[String] = Array.empty,
+                                   excludeTypes: Array[String] = Array.empty,
+                                   deleteData: Boolean = false,
+                                   selectAll: Boolean = false)
 
       implicit val formats: DefaultFormats.type = DefaultFormats
       // case 对象 -> json str
