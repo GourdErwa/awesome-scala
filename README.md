@@ -18,8 +18,8 @@ scala 基础、常用类库使用
 |[scala-base](./scala-base)|语言核心特性，特性深度分析示例|
 |[scala-break-through-notes](./scala-break-through-notes)|细节知识笔记|
 |[scala-app-json](./scala-app-json)|scala-json相关操作（json4s-jackson）|
-|[scala-app-shapeless](./scala-app-shapeless)|shapeless 库相关操作|
-|[scala-app-cats](./scala-app-cats)|cats 库相关操作|
+|[scala-app-shapeless（进行中）](./scala-app-shapeless)|shapeless 库相关操作|
+|[scala-app-cats（进行中）](./scala-app-cats)|cats 库相关操作|
 
 ## 编码风格
 * 模块内容参考`README.md`文件声明
