@@ -34,5 +34,16 @@
 原型的例子：Function1[-T1, +R]，CanBuildFrom[-From, -Elem, +To]，OutputChannel[-Msg]
 
 ## 衍生知识
-
+可变(Immutable)集合应该是协变的(covariant)。接受容器化类型得方法应该适当地降级(downgrade)集合：
+ ```
+ trait Collection[+T] {
+   def add[U >: T](other: U): Collection[U]
+ }
+ ```
+可变(mutable)集合应该是逆变的(invariant). 协变对于可变集合是典型无效的。考虑：
+ ```
+ trait HashSet[+T] {
+   def add[U >: T](item: U)
+ }
+ ```
 [Understanding F[_] in Scala](https://medium.com/bigpanda-engineering/understanding-f-in-scala-4bec5996761f)

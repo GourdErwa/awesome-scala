@@ -25,14 +25,28 @@ object MyApp {
   {
     case class User(name: String, age: Int)
 
-    val userBase = List(User("Travis", 28),
-      User("Kelly", 33),
-      User("Jennifer", 44),
-      User("Dennis", 23))
+    val base = Seq(User("Travis", 28), User("Kelly", 33), User("Jennifer", 44), User("Dennis", 23))
+    val nonBasic = Seq(User("Li", 29), User("Kelly", 39), User("Jennifer", 47), User("Dennis", 21))
 
-    val twentySomethings = for (user <- userBase if user.age >= 20 && user.age < 30) yield user.name
+    // for 表达式实现
+    val twentySomethingsFor = for {
+      b <- base if b.age >= 20
+      nb <- nonBasic if nb.age >= 10
+      if b.name == nb.name
+    } yield (b.name, b.age - nb.age)
 
-    twentySomethings.foreach(name => logger.info(name)) // prints Travis Dennis
+    val twentySomethingsFlatMap = base // for 推导为 flatMap 表达式实现
+      .withFilter(_.age >= 20)
+      .flatMap {
+        b =>
+          nonBasic
+            .withFilter(_.age >= 10)
+            .withFilter(_.name == b.name)
+            .map(nb => (b.name, b.age - nb.age))
+      }
+
+    logger.info(s"twentySomethingsFor=$twentySomethingsFor")
+    logger.info(s"twentySomethingsFlatMap=$twentySomethingsFlatMap")
   }
 
   logger.info("> ------------------------------------------")

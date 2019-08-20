@@ -10,6 +10,7 @@ import scala.annotation.tailrec
   */
 sealed trait List[+A] {
 
+  /** 链表长度计算 结果与[[List.length]] 一致 */
   def size: Int = this match {
     case Nil => 0
     case Cons(_, tail) => 1 + tail.size
@@ -17,20 +18,25 @@ sealed trait List[+A] {
 
   def isEmpty: Boolean = size == 0
 
+  /** 链表头节点 */
   def head: A
 
+  /** 链表尾节点 */
   def tail: List[A]
 
+  /** 设值链表头节点 */
   def headOpt[U >: A](h: U): List[U] = this match {
     case Nil => Cons(h, Nil)
     case Cons(_, next) => Cons(h, next)
   }
 
+  /** 设值链表头节点 */
   def tailOpt[U >: A](t: List[U]): List[U] = this match {
     case Nil => Nil
     case Cons(h, _) => Cons(h, t)
   }
 
+  /** 反转 */
   def reverse: List[A] = {
     var result: List[A] = Nil
     var these = this
@@ -41,6 +47,7 @@ sealed trait List[+A] {
     result
   }
 
+  /** 从头删除指定个数节点后返回剩余链表 */
   def drop(n: Int): List[A] = {
     @tailrec
     def loop(n: Int, lag: List[A]): List[A] = if (n <= 0 || lag.isEmpty) lag else loop(n - 1, lag.tail)
@@ -48,6 +55,7 @@ sealed trait List[+A] {
     loop(n, this)
   }
 
+  /** 从头循环删除节点，有函数不为true退出删除操作返回剩余链表 */
   def dropWhile(f: A => Boolean): List[A] = {
     var these = this
     while (!these.isEmpty && f(these.head)) {
@@ -56,13 +64,14 @@ sealed trait List[+A] {
     these
   }
 
+  /** 从头循环删除节点，有函数不为true退出删除操作返回剩余链表 尾递归实现 */
   @tailrec
   final def dropWhile2(f: A => Boolean): List[A] = this match {
     case _ => this
     case Cons(h, t) if f(h) => t.dropWhile2(f)
   }
 
-  /** 非尾递归实现 */
+  /** 非尾递归实现 不推荐 请参考 foldLeft */
   final def foldRight[B](z: B)(f: (A, B) => B): B = this match {
     case Nil => z
     case Cons(h, next) => f(h, next.foldRight(z)(f))
@@ -72,17 +81,37 @@ sealed trait List[+A] {
   @tailrec
   final def foldLeft[B](z: B)(f: (A, B) => B): B = this match {
     case Nil => z
-    case Cons(h, t) => t.foldLeft(f(z, h))(f)
+    case Cons(h, t) => t.foldLeft(f(h, z))(f)
   }
 
-  def length: Int = foldRight(0)((_, acc) => acc + 1)
+  def zipWith[U >: A](o: List[U]): List[A] = ???
+
+  /*def append(aa: List[A]): List[A] = aa match {
+    case Nil => this
+    case Cons(h, next) => Cons(h, append(next))
+  }*/
+
+  def map[B](f: A => B): List[B] = {
+    var result: List[B] = Nil
+    var these = this
+    while (!these.isEmpty) {
+      result = Cons(f(these.head), result)
+      these = these.tail
+    }
+    result.reverse
+  }
+
+  def map1[B](f: A => B): List[B] = foldRight(Nil: List[B])((h, t) => Cons(f(h), t))
+
+  // def flatMap[B](f: A => List[B]): List[B] = foldRight(Nil: List[B])((h, t) => Cons(f(h), t))
+
+  def length: Int = foldLeft(0)((_, acc) => acc + 1)
 }
 
 case object Nil extends List[Nothing] {
   override def head: Nothing = throw new UnsupportedOperationException("head of empty list")
 
   override def tail: Nothing = throw new UnsupportedOperationException("tail of empty list")
-
 }
 
 case class Cons[+A](h: A, next: List[A]) extends List[A] {
@@ -141,6 +170,10 @@ object MyApp {
     logger.info(s"listInt.foldRight(0)(_ + _)=${listInt.foldRight(0)(_ + _)}") // 等价于 1+2+3+4+5
 
     logger.info(s"listInt.foldRight(Nil:List[Int])(Cons(_, _))=${listInt.foldRight(Nil: List[Int])(Cons(_, _))}")
+    logger.info(s"listInt.foldLeft(Nil:List[Int])(Cons(_, _))=${listInt.foldLeft(Nil: List[Int])(Cons(_, _))}")
+
+    logger.info(s"listInt.map(_ + 1)=${listInt.map(_ + 1)}")
+    logger.info(s"listInt.map1(_ + 1)=${listInt.map1(_ + 1)}")
 
   }
 }

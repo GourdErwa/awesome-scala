@@ -37,7 +37,7 @@ scala 基础、常用类库使用
 
 
 ## scala-style-guide
-* [databricks Scala Coding Style Guide](https://github.com/databricks/scala-style-guide)
+* [databricks-scala-style-guide](https://github.com/databricks/scala-style-guide)
 
 ## 第三方资源
 * [twitter-effective-scala](http://twitter.github.io/effectivescala/index-cn.html)
