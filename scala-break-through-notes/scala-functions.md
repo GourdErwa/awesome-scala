@@ -14,7 +14,7 @@ trait Collection[A] {
   def aggregate[B](z: => B)(seqop: (B, A) => B, combop: (B, B) => B): B
 }
 ```
-![aggregate](../images/scala-functions/aggregate.svg)
+![aggregate](./images/scala-functions/aggregate.svg)
 ## andThen
 ## appended
 ## appendedAll
