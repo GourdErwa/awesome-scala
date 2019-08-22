@@ -71,5 +71,10 @@ object Ranges {
 
       logger.info(s"(0 to 34 by 2) == someNumbers=${(0 to 34 by 2) == someNumbers}")
     }
+
+    {
+      // ? logger.info(s"${1 to 10 span (_ > 5)}")
+      // ? logger.info(s"${1 to 10 splitAt 5}")
+    }
   }
 }
