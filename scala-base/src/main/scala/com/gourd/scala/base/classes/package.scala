@@ -5,9 +5,7 @@ package com.gourd.scala.base
   *
   * @author Li.Wei by 2019-08-06
   */
-package object classes {
-
-}
+package object classes
 
 // 类定义
 class Point1(var x: Int, var y: Int) {

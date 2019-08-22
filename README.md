@@ -6,16 +6,13 @@ scala 基础、常用类库使用
 - Gradle 5.5.1
 - Java 11
 - Scala 2.13.0
-> 说明：
-> - 项目依赖scala包需2.13.0版本编译，避免因版本差异导致 ClassNotFoundException 异常
+> - 项目依赖scala-2.13.0编译，避免因版本差异导致 ClassNotFoundException 异常
 
 # 项目结构
 ## 模块说明
-> `scala-app-${lib-name}` 模块为第三方类库应用实例
-
 |模块|说明|
 |:---|:---|
-|[scala-base](./scala-base)|语言核心特性，特性深度分析示例|
+|[scala-base](./scala-base)|语言核心特性、特性深度分析示例、常用函数|
 |[scala-break-through-notes](./scala-break-through-notes)|细节知识笔记|
 |[scala-app-json](./scala-app-json)|scala-json相关操作（json4s-jackson）|
 |[scala-app-shapeless（进行中）](./scala-app-shapeless)|shapeless 库相关操作|

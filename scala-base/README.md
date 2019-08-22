@@ -40,3 +40,5 @@ scala 语言核心特性简介，scala 特性深度分析
 ## 示例内容
 示例内容参考包声明：[com.gourd.scala.overviews](./src/main/scala/com/gourd/scala/overviews/package.scala)
 
+# scala-常用（未完成）
+示例内容参考包声明：[com.gourd.scala.functions](./src/main/scala/com/gourd/scala/functions)
