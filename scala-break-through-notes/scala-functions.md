@@ -15,6 +15,8 @@ trait Collection[A] {
 }
 ```
 ![aggregate](./images/scala-functions/aggregate.svg)
+![aggregate](https://github.com/GourdErwa/scala-advanced/blob/master/scala-break-through-notes/images/scala-functions/aggregate.svg)
+
 ## andThen
 ## appended
 ## appendedAll
