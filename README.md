@@ -1,6 +1,7 @@
 # scala-advanced
 scala 基础、常用类库使用
 
+[![DepShield Badge](https://depshield.sonatype.org/badges/GourdErwa/scala-advanced/depshield.svg)](https://depshield.github.io)
 # 构建环境
 - Intellij 2019.2
 - Gradle 5.5.1
