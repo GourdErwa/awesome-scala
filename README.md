@@ -3,22 +3,21 @@ scala 基础、常用类库使用
 
 [![DepShield Badge](https://depshield.sonatype.org/badges/GourdErwa/scala-advanced/depshield.svg)](https://depshield.github.io)
 # 构建环境
-- Intellij 2019.2
-- Gradle 5.5.1
-- Java 11
-- Scala 2.13.0
-> - 项目依赖scala-2.13.0编译，避免因版本差异导致 ClassNotFoundException 异常
+Intellij 2019.2、Gradle 5.5.1、Java 11、Scala 2.13.0   
+*项目依赖scala-2.13.0编译，避免因版本差异导致 ClassNotFoundException 异常*
 
 # 项目结构
 ## 模块说明
-|模块|说明|
-|:---|:---|
-|[scala-base](./scala-base)|语言核心特性、特性深度分析示例、常用函数|
-|[scala-break-through-notes](./scala-break-through-notes)|细节知识笔记|
-|[scala-app-json](./scala-app-json)|scala-json相关操作（json4s-jackson）|
-|[scala-app-shapeless（进行中）](./scala-app-shapeless)|shapeless 库相关操作|
-|[scala-app-cats（进行中）](./scala-app-cats)|cats 库相关操作|
-|[scala-exercises](./scala-exercises)|scala-练习题(STD)（进行中）|
+|模块|说明|学习顺序|
+|:---|:---|:---|
+|[scala-base](./scala-base)|语言核心特性、特性深度分析示例、常用函数|入门|
+|[scala-base-exercises](./scala-base-exercises)|scala-练习题(STD)（进行中）|提升|
+|[scala-break-through-notes](./scala-break-through-notes)|细节知识笔记|提升|
+|[scala-app-json](./scala-app-json)|scala-json相关操作（json4s-jackson）|扩展|
+|[scala-app-shapeless（进行中）](./scala-app-shapeless)|shapeless 库相关操作|扩展|
+|[scala-app-cats（进行中）](./scala-app-cats)|cats 库相关操作|扩展|
+
+
 
 ## 编码风格
 * 模块内容参考`README.md`文件声明

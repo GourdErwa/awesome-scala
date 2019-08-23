@@ -1,18 +1,16 @@
-package com.gourd.scala
+package com.gourd.scala.std.lib
 
 import org.slf4j.LoggerFactory
 
 /**
-  * @author Li.Wei by 2019-08-06
+  * 程序模板
+  *
+  * @author Li.Wei by 2019/8/22
   */
-object MyApp {
-  private val logger = LoggerFactory.getLogger("MyApp")
+object AppTemplate {
+  private val logger = LoggerFactory.getLogger("App")
 
   def main(args: Array[String]): Unit = {}
-
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////
-  // 示例分割注释
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
   logger.info("------------------------> block line [1] <----------------------------")
 
@@ -25,6 +23,11 @@ object MyApp {
   }
 
   logger.info("------------------------> block line [3] <----------------------------")
+
+  { //
+  }
+
+  logger.info("------------------------> block line [4] <----------------------------")
 
   { //
   }
