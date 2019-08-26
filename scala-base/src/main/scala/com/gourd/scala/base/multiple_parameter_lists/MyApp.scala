@@ -13,8 +13,8 @@ import org.slf4j.LoggerFactory
 object MyApp {
   private val logger = LoggerFactory.getLogger("MyApp")
 
-  def main(args: Array[String]): Unit = {
-
+  def main(args: Array[String]): Unit = {}
+  {
     val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
     val res = numbers.foldLeft(0)((m, n) => m * n)
     logger.info(s"$res") // 55

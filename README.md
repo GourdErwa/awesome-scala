@@ -1,6 +1,9 @@
 # scala-advanced
-scala 基础、常用类库使用
-
+scala 编程入门进阶、以及常用类库使用
+![JDK](https://img.shields.io/badge/JDK-11-brightgreen.svg?style=flat-square)
+![Scala](https://img.shields.io/badge/Scala-2.13.0-brightgreen.svg?style=flat-square)
+![Gradle](https://img.shields.io/badge/Gradle-5.5.1-brightgreen.svg?style=flat-square)
+[![License](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://en.wikipedia.org/wiki/MIT_License)
 [![DepShield Badge](https://depshield.sonatype.org/badges/GourdErwa/scala-advanced/depshield.svg)](https://depshield.github.io)
 # 构建环境
 Intellij 2019.2、Gradle 5.5.1、Java 11、Scala 2.13.0   
@@ -8,16 +11,15 @@ Intellij 2019.2、Gradle 5.5.1、Java 11、Scala 2.13.0
 
 # 项目结构
 ## 模块说明
-|模块|说明|学习顺序|
+|模块|说明|目的|
 |:---|:---|:---|
 |[scala-base](./scala-base)|语言核心特性、特性深度分析示例、常用函数|入门|
-|[scala-base-exercises](./scala-base-exercises)|scala-练习题(STD)（进行中）|提升|
+|[scala-exercises-stdlib](./scala-exercises-stdlib)|练习题-std lib|巩固基础|
+|[scala-exercises-fpinscala（进行中）](./scala-exercises-fpinscala)|练习题-Scala函数式编程|函数式编程思想进阶|
 |[scala-break-through-notes](./scala-break-through-notes)|细节知识笔记|提升|
-|[scala-app-json](./scala-app-json)|scala-json相关操作（json4s-jackson）|扩展|
-|[scala-app-shapeless（进行中）](./scala-app-shapeless)|shapeless 库相关操作|扩展|
-|[scala-app-cats（进行中）](./scala-app-cats)|cats 库相关操作|扩展|
-
-
+|[scala-app-json](./scala-app-json)|scala-json相关操作（json4s-jackson）|类库扩展|
+|[scala-app-shapeless（进行中）](./scala-app-shapeless)|shapeless 泛型编程库|类库扩展|
+|[scala-app-cats（进行中）](./scala-app-cats)|cats 库相关操作|类库扩展|
 
 ## 编码风格
 * 模块内容参考`README.md`文件声明

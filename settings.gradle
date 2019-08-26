@@ -9,11 +9,12 @@
 
 rootProject.name = 'scala-advanced'
 include 'scala-base'
-include 'scala-base-exercises'
-include 'scala-app-json'
 
+include 'scala-exercises-stdlib'
+include 'scala-exercises-fpinscala'
+
+include 'scala-app-json'
 include 'scala-app-shapeless'
 include 'scala-app-cats'
-
 
 
