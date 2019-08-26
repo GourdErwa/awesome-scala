@@ -20,7 +20,7 @@ trait IterableOnceOps[+A, +CC[_], +C] extends Any {
 ![aggregate](https://github.com/GourdErwa/scala-advanced/blob/master/scala-break-through-notes/images/scala-functions/aggregate.svg)
 ```scala
 // 示例代码
-
+// test pull
 ```
 ## andThen
 ## appended
