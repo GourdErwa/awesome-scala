@@ -4,6 +4,7 @@
 ![Gradle](https://img.shields.io/badge/Gradle-5.5.1-brightgreen.svg?style=flat-square)
 [![License](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://en.wikipedia.org/wiki/MIT_License)
 [![DepShield Badge](https://depshield.sonatype.org/badges/GourdErwa/scala-advanced/depshield.svg)](https://depshield.github.io)
+[![CodeFactor](https://www.codefactor.io/repository/github/gourderwa/scala-advanced/badge)](https://www.codefactor.io/repository/github/gourderwa/scala-advanced)
 # 项目结构
 ## 模块说明
 |模块|说明|目的|
