@@ -1,0 +1,45 @@
+第三部分 函数设计的通用结构
+10 Monoid
+10.1 什么是monoid
+10.2 使用monoid折叠列表
+10.3 结合律和并行化
+10.4 例子：并行解析
+10.5 可折叠数据结构
+10.6 组合monoid
+10.6.1 组装更加复杂的monoid
+10.6.2 使用组合的monoid融合多个遍历
+10.7 小结
+11 Monad
+11.1 函子：对map函数的泛化
+11.1.1 函子法则
+11.2 Monad：对flatMap和unit函数的泛化
+11.3 Monadic组合子
+11.4 单子定律
+11.4.1 结合法则
+11.4.2 为指定的monad证明结合法则
+11.4.3 单位元法则
+11.5 什么是monad
+11.5.1 identity monad
+11.5.2 状态monad和partial type application
+11.6 小结
+12 可应用和可遍历函子
+12.1 泛化单子
+12.2 Applicative trait
+12.3 单子与可应用函子的区别
+12.3.1 对比Option applicative与Option monad
+12.3.2 对比Parser applicative与Parser monad
+12.4 可应用函子的优势
+12.4.1 不是所有的可应用函子都是Monad
+12.5 可应用法则
+12.5.1 Left and right identity
+12.5.2 结合律
+12.5.3 Naturality of product
+12.6 可遍历函子
+12.7 使用Traverse
+12.7.1 从monoid到可应用函子
+12.7.2 带状态的遍历
+12.7.3 组合可遍历结构
+12.7.4 遍历融合
+12.7.5 嵌套遍历
+12.7.6 Monad组合
+12.8 小结

@@ -14,6 +14,16 @@ object MyApp {
   private val logger = LoggerFactory.getLogger("MyApp")
 
   def main(args: Array[String]): Unit = {}
+
+  {
+    // 函数定义 int2int 等价于 int2intFunc1 等价于 int2intFunc2
+    val int2int: Int => Int = a => a + 1
+    val int2intFunc1: Function1[Int, Int] = new Function[Int, Int] {
+      override def apply(v1: Int) = v1 + 1
+    }
+    val int2intFunc2: (Int) => Int = (v1: Int) => v1 + 1
+  }
+
   {
     val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
     val res = numbers.foldLeft(0)((m, n) => m * n)

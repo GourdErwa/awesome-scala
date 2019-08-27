@@ -1,13 +1,57 @@
-package com.gourd.scala.overviews.collections.custom.list
+package com.gourd.scala.exercises.fpinscala
 
 import org.slf4j.LoggerFactory
 
 import scala.annotation.tailrec
 
-/** 自定义实现 scala List
-  *
-  * @author Li.Wei by 2019-08-19
+/**
+  * @author Li.Wei by 2019/8/27
   */
+object FunctionalDataStructures {
+  private val logger = LoggerFactory.getLogger("App")
+
+  def main(args: Array[String]): Unit = {}
+
+  sealed trait List[+A]
+
+  case object Nil extends List[Nothing]
+
+  case class Cons[+A](head: A, tail: List[A]) extends List[A]
+
+  logger.info("------------------------> block line [1] <----------------------------")
+
+  { //
+    logger.info(s"List.apple(1, 2, 3).setHead(3)=${List(1, 2, 3).setHead(3)}")
+    logger.info(s"""List.apple("a", "b").setHead("c")=${List("a", "b").setHead("c")}""")
+
+    val intList = List(1, 2, 3)
+    val nullList = List.apply()
+    println(intList.drop(1))
+    println(nullList.drop(10))
+    println(nullList.drop(10))
+  }
+
+  logger.info("------------------------> block line [2] <----------------------------")
+
+  { //
+  }
+
+  logger.info("------------------------> block line [3] <----------------------------")
+
+  { //
+  }
+
+  logger.info("------------------------> block line [4] <----------------------------")
+
+  { //
+  }
+
+  logger.info("------------------------> block line [5] <----------------------------")
+
+  { //
+  }
+}
+
 sealed trait List[+A] {
 
   /** 链表长度计算 结果与[[List.length]] 一致 */
@@ -21,17 +65,21 @@ sealed trait List[+A] {
   /** 链表头节点 */
   def head: A
 
-  /** 链表尾节点 */
+  /** 移除头结点返回其余部分 */
   def tail: List[A]
 
-  /** 设值链表头节点 */
-  def headOpt[U >: A](h: U): List[U] = this match {
+  /** 设值链表头节点，替换已存在的头节点
+    *
+    * setHead(List(1, 2, 3), 3) shouldBe List(3, 2, 3)
+    * setHead(List("a", "b"), "c") shouldBe List("c", "b")
+    */
+  def setHead[U >: A](h: U): List[U] = this match {
     case Nil => Cons(h, Nil)
     case Cons(_, next) => Cons(h, next)
   }
 
   /** 设值链表头节点 */
-  def tailOpt[U >: A](t: List[U]): List[U] = this match {
+  def setTail[U >: A](t: List[U]): List[U] = this match {
     case Nil => Nil
     case Cons(h, _) => Cons(h, t)
   }
@@ -124,56 +172,6 @@ case class Cons[+A](h: A, next: List[A]) extends List[A] {
 object List {
 
   /** head 返回列表第一个元素,tail 返回一个列表，包含除了第一元素之外的其他元素 */
-  def apple[A](as: A*): List[A] = if (as.isEmpty) Nil else Cons(as.head, apple(as.tail: _*))
+  def apply[A](as: A*): List[A] = if (as.isEmpty) Nil else Cons(as.head, apply(as.tail: _*))
 
-}
-
-object MyApp {
-  private val logger = LoggerFactory.getLogger("MyApp")
-
-  def main(args: Array[String]): Unit = {
-
-    val ex1 = Cons(1, Nil)
-    logger.info(s"ex1=$ex1")
-
-    val listInt = List.apple(1, 2, 3, 4, 5)
-    logger.info(s"listInt=$listInt")
-    logger.info(s"listInt.size=${listInt.size}")
-    logger.info(s"listInt.length=${listInt.length}")
-
-    logger.info(s"caseVal=${
-      listInt match {
-        case Nil => 42
-        case Cons(x, Cons(2, Cons(4, _))) => x
-        case Cons(h, t) => h + t.size
-        // case Cons(x, Cons(y, Cons(3, Cons(4, _)))) => x + y
-        // case Cons(h, t) => h + List.sum(t)
-        case _ => 101
-      }
-    }")
-    logger.info(s"listInt.head=${listInt.head}")
-    logger.info(s"listInt.tail=${listInt.tail}")
-    logger.info(s"listInt.headOpt(11)=${listInt.headOpt(11)}")
-    logger.info(s"listInt.tailOpt(Cons(11, Cons(22, Nil)))=${listInt.tailOpt(Cons(11, Cons(22, Nil)))}")
-
-    logger.info(s"listInt.reverse=${listInt.reverse}")
-
-    logger.info(s"listInt.drop(2)=${listInt.drop(2)}")
-    logger.info(s"listInt.drop(listInt.size + 10)=${listInt.drop(listInt.size + 10)}")
-
-    logger.info(s"listInt.dropWhile(_ == 2)=${listInt.dropWhile(_ == 2)}")
-    logger.info(s"listInt.dropWhile(_ % 2 == 1)=${listInt.dropWhile(_ % 2 == 1)}")
-
-    logger.info(s"listInt.dropWhile2(_ == 2)=${listInt.dropWhile2(_ == 2)}")
-    logger.info(s"listInt.dropWhile2(_ % 2 == 1)=${listInt.dropWhile2(_ % 2 == 1)}")
-
-    logger.info(s"listInt.foldRight(0)(_ + _)=${listInt.foldRight(0)(_ + _)}") // 等价于 1+2+3+4+5
-
-    logger.info(s"listInt.foldRight(Nil:List[Int])(Cons(_, _))=${listInt.foldRight(Nil: List[Int])(Cons(_, _))}")
-    logger.info(s"listInt.foldLeft(Nil:List[Int])(Cons(_, _))=${listInt.foldLeft(Nil: List[Int])(Cons(_, _))}")
-
-    logger.info(s"listInt.map(_ + 1)=${listInt.map(_ + 1)}")
-    logger.info(s"listInt.map1(_ + 1)=${listInt.map1(_ + 1)}")
-
-  }
 }

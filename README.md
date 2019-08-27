@@ -42,3 +42,10 @@
 
 ### 在线学习资源
 [Scala-Exercises-在线学习scala不同的类库使用](https://www.scala-exercises.org/)
+
+# 联系
+* QQ 群：348527861
+* email：gourderwa@163.com
+
+# License
+[MIT license](https://en.wikipedia.org/wiki/MIT_License) 许可
