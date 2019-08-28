@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory
 import scala.annotation.tailrec
 
 /**
+  * https://www.scala-exercises.org/fp_in_scala/functional_data_structures
+  *
   * @author Li.Wei by 2019/8/27
   */
 object FunctionalDataStructures {
@@ -26,30 +28,31 @@ object FunctionalDataStructures {
 
     val intList = List(1, 2, 3)
     val nullList = List.apply()
-    println(intList.drop(1))
-    println(nullList.drop(10))
-    println(nullList.drop(10))
+
+    logger.info(s"intList.drop(1)=${intList.drop(1)}")
+    logger.info(s"intList.drop(1)=${intList.drop(10)}")
+    logger.info(s"nullList.drop(1)=${nullList.drop(10)}")
+
+    logger.info(s"nullList.init=${intList.init}")
+    logger.info(s"intList.foldRight(Nil: List[Int])(Cons(_, _))=${intList.foldRight(Nil: List[Int])(Cons(_, _))}")
+    logger.info(s"intList.concat(List(List(4, 5, 6), List(7, 8)))=${intList.concat(List(List(4, 5, 6), List(7, 8)))}")
+    logger.info(s"intList.flatMap(f => List(f + 1, f + 2))=${intList.flatMap(f => List(f + 1, f + 2))}")
+    logger.info(s"intList.zipWith(List('a', 'b', 'c'))(_ + _)=${intList.zipWith(List('a', 'b', 'c'))(_ + _)}")
+
+
+    logger.info(s"intList.startsWith(List(1,2))=${intList.startsWith(List(1, 2))}")
+    logger.info(s"intList.startsWith(List(1,2,3,4))=${intList.startsWith(List(1, 2, 3, 4))}")
+
+    logger.info(s"intList.hasSubsequence(List(1,2))=${intList.hasSubsequence(List(2, 3))}")
+    logger.info(s"intList.hasSubsequence(List(1,2,3,4))=${intList.hasSubsequence(List(2, 3, 4))}")
   }
 
   logger.info("------------------------> block line [2] <----------------------------")
 
   { //
+
   }
 
-  logger.info("------------------------> block line [3] <----------------------------")
-
-  { //
-  }
-
-  logger.info("------------------------> block line [4] <----------------------------")
-
-  { //
-  }
-
-  logger.info("------------------------> block line [5] <----------------------------")
-
-  { //
-  }
 }
 
 sealed trait List[+A] {
@@ -65,8 +68,15 @@ sealed trait List[+A] {
   /** 链表头节点 */
   def head: A
 
-  /** 移除头结点返回其余部分 */
+  /** 移除头节点返回其余部分 */
   def tail: List[A]
+
+  /** 移除尾节点返回其余部分 */
+  def init: List[A] = this match {
+    case Nil => Nil
+    case Cons(_, Nil) => Nil
+    case Cons(h, t) => Cons(h, t.init)
+  }
 
   /** 设值链表头节点，替换已存在的头节点
     *
@@ -94,6 +104,8 @@ sealed trait List[+A] {
     }
     result
   }
+
+  // def reverse2: List[A] = this.foldLeft(List[A]())((acc, h) => Cons(h, acc))
 
   /** 从头删除指定个数节点后返回剩余链表 */
   def drop(n: Int): List[A] = {
@@ -132,7 +144,18 @@ sealed trait List[+A] {
     case Cons(h, t) => t.foldLeft(f(h, z))(f)
   }
 
-  def zipWith[U >: A](o: List[U]): List[A] = ???
+  /** append */
+  def append[U >: A](r: List[U]): List[U] = foldRight(r)(Cons(_, _))
+
+  /** 将列表列表连接到一个列表中 */
+  def concat[U >: A](l: List[List[U]]): List[U] = append(l.foldRight(Nil: List[U])(_.append(_)))
+
+  /** 将列表添加到当前列表末尾 */
+  def zipWith[B, C](o: List[B])(f: (A, B) => C): List[C] = (this, o) match {
+    case (Nil, _) => Nil
+    case (_, Nil) => Nil
+    case (Cons(h1, t1), Cons(h2, t2)) => Cons(f(h1, h2), t1.zipWith(t2)(f))
+  }
 
   /*def append(aa: List[A]): List[A] = aa match {
     case Nil => this
@@ -151,9 +174,23 @@ sealed trait List[+A] {
 
   def map1[B](f: A => B): List[B] = foldRight(Nil: List[B])((h, t) => Cons(f(h), t))
 
-  // def flatMap[B](f: A => List[B]): List[B] = foldRight(Nil: List[B])((h, t) => Cons(f(h), t))
+  def flatMap[B >: A](f: A => List[B]): List[B] = concat[B](map(f))
 
   def length: Int = foldLeft(0)((_, acc) => acc + 1)
+
+  @annotation.tailrec
+  final def startsWith[U >: A](prefix: List[U]): Boolean = (this, prefix) match {
+    case (_, Nil) => true
+    case (Cons(h, t), Cons(h2, t2)) if h == h2 => t.startsWith(t2)
+    case _ => false
+  }
+
+  @annotation.tailrec
+  final def hasSubsequence[U >: A](sub: List[U]): Boolean = this match {
+    case Nil => sub == Nil
+    case _ if this.startsWith(sub) => true
+    case Cons(_, t) => t.hasSubsequence(sub)
+  }
 }
 
 case object Nil extends List[Nothing] {
@@ -171,7 +208,6 @@ case class Cons[+A](h: A, next: List[A]) extends List[A] {
 
 object List {
 
-  /** head 返回列表第一个元素,tail 返回一个列表，包含除了第一元素之外的其他元素 */
   def apply[A](as: A*): List[A] = if (as.isEmpty) Nil else Cons(as.head, apply(as.tail: _*))
 
 }

@@ -3,6 +3,8 @@ package com.gourd.scala.exercises.fpinscala
 import org.slf4j.LoggerFactory
 
 /**
+  * https://www.scala-exercises.org/fp_in_scala/getting_started_with_functional_programming
+  *
   * @author Li.Wei by 2019/8/27
   */
 object GettingStartedWithFunctionalProgramming {

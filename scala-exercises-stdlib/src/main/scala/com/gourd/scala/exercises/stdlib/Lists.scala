@@ -91,4 +91,22 @@ object Lists {
     logger.info(s"head ::: tail=${head ::: tail}")
     logger.info(s"head ::: Nil=${head ::: Nil}")
   }
+
+  {
+    val cond: (Int, Int) => Boolean = (_ < _)
+
+    def insert(x: Int, xs: List[Int]): List[Int] =
+      xs match {
+        case List() => x :: Nil: List[Int]
+        case y :: ys => if (cond(x, y)) x :: y :: ys else y :: insert(x, ys)
+      }
+
+    logger.info(s"insert(2, 1 :: 3 :: Nil)=${insert(2, 1 :: 3 :: Nil)}")
+    logger.info(s"insert(1, 2 :: 3 :: Nil)=${insert(1, 2 :: 3 :: Nil)}")
+    logger.info(s"insert(3, 1 :: 2 :: Nil)=${insert(3, 1 :: 2 :: Nil)}")
+
+    //    insert(2, 1 :: 3 :: Nil) shouldBe (1 :: 2 :: 3 :: Nil)
+    //    insert(1, 2 :: 3 :: Nil) shouldBe (1 :: 2 :: 3 :: Nil)
+    //    insert(3, 1 :: 2 :: Nil) shouldBe (1 :: 2 :: 3 :: Nil)
+  }
 }

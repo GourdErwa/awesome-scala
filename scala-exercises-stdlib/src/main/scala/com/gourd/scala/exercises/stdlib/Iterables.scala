@@ -247,8 +247,8 @@ object Iterables {
     val result4 = (list foldRight 0) (_ - _)
     logger.info(s"result4=$result4")
 
-    logger.info(s"(((((0 - 5) - 4) - 3) - 2) - 1)=${(((((0 - 5) - 4) - 3) - 2) - 1)}") // foldLeft
-    logger.info(s"(5 - (4 - (3 - (2 - (1 - 0)))))=${(5 - (4 - (3 - (2 - (1 - 0)))))}") // foldRight
+    logger.info(s"(((((0 - 5) - 4) - 3) - 2) - 1)=${(((((0 - 5) - 4) - 3) - 2) - 1)}") // List(5,4,3,2,1)foldLeft展开
+    logger.info(s"(5 - (4 - (3 - (2 - (1 - 0)))))=${(5 - (4 - (3 - (2 - (1 - 0)))))}") // List(5,4,3,2,1)foldRight展开
   }
 
   logger.info("------------------------> block line [13] <----------------------------")

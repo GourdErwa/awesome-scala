@@ -10,12 +10,13 @@
 |模块|说明|目的|
 |:---|:---|:---|
 |[scala-base](./scala-base)|语言核心特性、特性深度分析示例、常用函数|入门|
-|[scala-exercises-stdlib](./scala-exercises-stdlib)|练习题-std lib|巩固基础|
+|[scala-exercises-stdlib](./scala-exercises-stdlib)|练习题-std-lib|巩固基础|
 |[scala-exercises-fpinscala（进行中）](./scala-exercises-fpinscala)|练习题-Scala函数式编程|函数式编程思想进阶|
-|[scala-break-through-notes](./scala-break-through-notes)|细节知识笔记|提升|
-|[scala-app-json](./scala-app-json)|scala-json相关操作（json4s-jackson）|类库扩展|
+|[scala-app-json](./scala-app-json)|scala-json 操作（json4s）|类库扩展|
 |[scala-app-shapeless（进行中）](./scala-app-shapeless)|shapeless 泛型编程库|类库扩展|
 |[scala-app-cats（进行中）](./scala-app-cats)|cats 库相关操作|类库扩展|
+|[scala-resources-notes](./scala-resources-notes)|md格式笔记|提升|
+|[scala-resources-book](./scala-resources-book)|scala-书籍|提升|
 
 ## 编码风格
 * 模块内容参考`README.md`文件声明
@@ -38,7 +39,6 @@
 * [databricks-scala-style-guide](https://github.com/databricks/scala-style-guide)
 * [李浩毅StrategicScalaStyle-列举了面对各种状况下应该选择的语言功能](http://www.lihaoyi.com/post/StrategicScalaStylePrincipleofLeastPower.html)
 * [underscore.io-开源scala相关书籍](https://underscore.io/training/)
-* [underscore.io-shapeless-guide-Scala泛型编程库](https://underscore.io/books/shapeless-guide/)
 
 ### 在线学习资源
 [Scala-Exercises-在线学习scala不同的类库使用](https://www.scala-exercises.org/)
