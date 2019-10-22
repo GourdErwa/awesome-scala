@@ -1,7 +1,7 @@
 # scala 入门进阶、常用类库学习
 ![JDK](https://img.shields.io/badge/JDK-11-brightgreen.svg?style=flat-square)
 ![Scala](https://img.shields.io/badge/Scala-2.13.0-brightgreen.svg?style=flat-square)
-![Gradle](https://img.shields.io/badge/Gradle-5.5.1-brightgreen.svg?style=flat-square)
+![Gradle](https://img.shields.io/badge/Gradle-5.6.2-brightgreen.svg?style=flat-square)
 [![License](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://en.wikipedia.org/wiki/MIT_License)
 [![DepShield Badge](https://depshield.sonatype.org/badges/GourdErwa/scala-advanced/depshield.svg)](https://depshield.github.io)
 [![CodeFactor](https://www.codefactor.io/repository/github/gourderwa/scala-advanced/badge)](https://www.codefactor.io/repository/github/gourderwa/scala-advanced)

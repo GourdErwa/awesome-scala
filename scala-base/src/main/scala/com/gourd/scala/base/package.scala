@@ -23,6 +23,7 @@ package com.gourd.scala
   * 自类型                         [[com.gourd.scala.base.self_types]]
   * 隐式参数                      [[com.gourd.scala.base.implicit_parameters]]
   * 隐式转换                      [[com.gourd.scala.base.implicit_conversions]]
+  * 隐式标识                      [[com.gourd.scala.base.implicitly]]
   * 多态方法                      [[com.gourd.scala.base.polymorphic_methods]]
   * 注解                          [[com.gourd.scala.base.annotations]]
   * 包和导入                      [[com.gourd.scala.base.packages_and_imports]]

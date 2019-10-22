@@ -1,17 +1,15 @@
 package com.gourd.scala.base.basics
 
-import org.slf4j.LoggerFactory
+import com.gourd.scala.GourdApp
 
 /**
   * Scala的基础知识。
   *
   * @author Li.Wei by 2019-08-06
   */
-object MyApp {
-  private val logger = LoggerFactory.getLogger("MyApp")
+object MyApp extends GourdApp {
 
   def main(args: Array[String]): Unit = {}
-
 
   ///////////////////////////////////////////////////////////////////////////////////////////////////////
   // 表达式

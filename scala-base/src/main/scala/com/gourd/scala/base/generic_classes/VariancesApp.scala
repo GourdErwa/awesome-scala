@@ -1,6 +1,6 @@
 package com.gourd.scala.base.generic_classes
 
-import org.slf4j.LoggerFactory
+import com.gourd.scala.GourdApp
 
 /** 协变/逆变/不变
   * 型变是复杂类型的子类型关系与其组件类型的子类型关系的相关性。
@@ -22,11 +22,9 @@ import org.slf4j.LoggerFactory
   *
   * @author Li.Wei by 2019-08-07
   */
-object VariancesApp {
-  val logger = LoggerFactory.getLogger("VariancesApp")
+object VariancesApp extends GourdApp {
 
   def main(args: Array[String]): Unit = {
-
   }
 }
 

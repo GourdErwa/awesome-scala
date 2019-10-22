@@ -3,6 +3,9 @@ package com.gourd.scala.base.generic_classes
 import org.slf4j.LoggerFactory
 
 /** 类型上界、下界
+  * `[T <: Comparable[T]]`
+  * <: ：指明上界，表达了泛型的类型必须是"某种类型"或某种类型的"子类"
+  * >: ：指明下界，表达了泛型的类型必须是"某种类型"或某种类型的"父类"
   *
   * @author Li.Wei by 2019-08-07
   */

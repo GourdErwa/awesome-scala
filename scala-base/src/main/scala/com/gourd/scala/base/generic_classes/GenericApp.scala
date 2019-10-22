@@ -1,6 +1,6 @@
 package com.gourd.scala.base.generic_classes
 
-import org.slf4j.LoggerFactory
+import com.gourd.scala.GourdApp
 
 /** 泛型类
   * 指可以接受类型参数的类
@@ -28,8 +28,7 @@ class Apple extends Fruit
 class Banana extends Fruit
 
 
-object GenericApp {
-  private val logger = LoggerFactory.getLogger("GenericApp")
+object GenericApp extends GourdApp {
 
   def main(args: Array[String]): Unit = {
     {

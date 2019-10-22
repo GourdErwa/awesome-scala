@@ -15,12 +15,8 @@ object MyApp {
   如果 length < 1，我们返回一个空列表。 否则我们将 x 添加到递归调用返回的重复列表中。
  （注意，:: 表示将左侧的元素添加到右侧的列表中。）
    */
-  def listOfDuplicates[A](x: A, length: Int): List[A] = {
-    if (length < 1)
-      Nil
-    else
-      x :: listOfDuplicates(x, length - 1)
-  }
+  def listOfDuplicates[A](x: A, length: Int): List[A] =
+    if (length < 1) Nil else x :: listOfDuplicates(x, length - 1)
 
   def main(args: Array[String]): Unit = {
     logger.info(listOfDuplicates[Int](3, 4).toString()) // List(3, 3, 3, 3)
