@@ -1,0 +1,98 @@
+<h1>Implicitly Surprising</h1>
+<table class="table meta-table table-condensed">
+    <tbody>
+    <tr>
+        <td class="header-column"><strong>Contributed by</strong></td>
+        <td>Dominik Gruntz</td>
+    </tr>
+    <tr>
+        <td><strong>Source</strong></td>
+        <td>N/A</td>
+    </tr>
+    <tr>
+        <td><strong>First tested with Scala version</strong></td>
+        <td>2.10.0</td>
+    </tr>
+    </tbody>
+</table>
+<div class="code-snippet">
+    <h3>What is the result of executing the following code?</h3>
+    <pre class="prettyprint lang-scala">
+implicit val z1 = 2
+def addTo(n: Int) = {
+   def add(x: Int)(y: Int)(implicit z: Int) = x + y + z
+   add(n) _
+}
+
+implicit val z2 = 3
+val addTo1 = addTo(1)
+addTo1(2)
+addTo1(2)(3)
+</pre>
+
+    <ol>
+        <li>Prints:
+            <pre class="prettyprint lang-scala">
+5
+6
+</pre>
+        </li>
+        <li>Prints:
+            <pre class="prettyprint lang-scala">
+6
+6
+</pre>
+        </li>
+        <li id="correct-answer">The first invocation of <tt>addTo1</tt> prints:
+            <pre class="prettyprint lang-scala">
+5
+</pre>
+            and the second fails to compile
+        </li>
+        <li>The first invocation of <tt>addTo1</tt> fails to compile and the second prints:
+            <pre class="prettyprint lang-scala">
+6
+</pre>
+        </li>
+    </ol>
+
+</div>
+
+<div id="explanation" class="explanation">
+    <h3>Explanation</h3>
+    <p>
+        When eta expansion is applied to method <tt>add</tt>, the result is a function of type <tt>Int => Int</tt>,
+        i.e. the implicit parameters are resolved <em>before</em> eta expansion is applied. Therefore the implicit value
+        <tt>z1 = 2</tt> is used as value for the implicit parameter <tt>z</tt>.
+    </p>
+    <p>
+        If no implicit parameter were available, the compiler would issue an error message:
+    <pre class="prettyprint lang-scala">
+scala> def add(x: Int)(y: Int)(implicit z: Int) = x + y + z
+add: (x: Int)(y: Int)(implicit z: Int)Int
+
+scala> add(1) _
+<console>:9: error: could not find implicit value for parameter z: Int
+              add(1) _
+                 ^
+</pre>
+    </p><p>
+    One could also specify an explicit value for <tt>z</tt> if no implicit value is defined in the current context, but
+    then the type has to be specified on the placeholder.
+    <pre class="prettyprint lang-scala">
+scala> val addTo1And3 = add(1)(_: Int)(3)
+addTo1And3: Int => Int = <function1>
+</pre>
+    </p><p>
+    This explains the result, i.e. the invocation of <tt>addTo1(2)</tt> returns <tt>5</tt> (<tt>1</tt> + <em>&lt;param&gt;</em>
+    + <tt>2</tt>) and
+    <tt>addTo1(2)(3)</tt> fails to compile as on the object <tt>5</tt> (result of <tt>addTo1(2)</tt>) no method <tt>apply</tt>
+    is defined.
+    <pre class="prettyprint lang-scala">
+scala> addTo1(2)(3)
+<console>:10: error: Int does not take parameters
+              addTo1(2)(3)
+                       ^
+</pre>
+    </p>
+</div>

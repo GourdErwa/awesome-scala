@@ -1,0 +1,87 @@
+<div id="title">
+    <h1>Location, Location, Location</h1>
+</div>
+<table class="table meta-table table-condensed">
+    <tbody>
+    <tr>
+        <td class="header-column"><strong>Contributed by</strong></td>
+        <td>Andrew Phillips &amp; Nermin Serifovic</td>
+    </tr>
+    <tr>
+        <td><strong>Source</strong></td>
+        <td><a target="_blank"
+               href="http://stackoverflow.com/questions/4701749/nullpointerexception-when-accessing-overriden-val-in-abstract-constructor">Stack
+            Overflow</a></td>
+    </tr>
+    <tr>
+        <td><strong>First tested with Scala version</strong></td>
+        <td>2.10.0</td>
+    </tr>
+    </tbody>
+</table>
+<div class="code-snippet">
+    <h3>What is the result of executing the following code?</h3>
+    <pre class="prettyprint lang-scala">
+trait A {
+  val audience: String
+  println("Hello " + audience)
+}
+
+class BMember(a: String = "World") extends A {
+  val audience = a
+  println("I repeat: Hello " + audience)
+}
+
+class BConstructor(val audience: String = "World") extends A {
+  println("I repeat: Hello " + audience)
+}
+
+new BMember("Readers")
+new BConstructor("Readers")
+</pre>
+    <ol>
+        <li>Prints:
+            <pre class="prettyprint lang-scala">
+Hello Readers
+I repeat: Hello Readers
+Hello Readers
+I repeat: Hello Readers
+</pre>
+        </li>
+        <li>Prints:
+            <pre class="prettyprint lang-scala">
+Hello World
+I repeat: Hello Readers
+Hello World
+I repeat: Hello Readers
+</pre>
+        </li>
+        Prints:
+        <li id="correct-answer">
+      <pre class="prettyprint lang-scala">
+Hello null
+I repeat: Hello Readers
+Hello Readers
+I repeat: Hello Readers
+</pre>
+        </li>
+        <li>Prints:
+            <pre class="prettyprint lang-scala">
+Hello null
+I repeat: Hello Readers
+Hello null
+I repeat: Hello Readers
+</pre>
+        </li>
+    </ol>
+</div>
+
+<div id="explanation" class="explanation">
+    <h3>Explanation</h3>
+    <p>
+        When instantiating superclasses or traits, the parent constructor
+        can be visualized as being executed before the first line of the child
+        constructor but after the class definition.
+    </p>
+</div>
+

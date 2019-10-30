@@ -1,0 +1,74 @@
+<div id="title">
+    <h1>Match Me</h1>
+</div>
+<table class="table meta-table table-condensed">
+    <tbody>
+    <tr>
+        <td class="header-column"><strong>Contributed by</strong></td>
+        <td>Andrew Phillips &amp; Nermin Serifovic</td>
+    </tr>
+    <tr>
+        <td><strong>Source</strong></td>
+        <td><a target="_blank" href="http://stackoverflow.com/questions/2727612/scalas-tuple-unwrapping-nuance">Stack
+            Overflow</a></td>
+    </tr>
+    <tr>
+        <td><strong>First tested with Scala version</strong></td>
+        <td>2.9.2</td>
+    </tr>
+    <tr>
+        <td><strong>Made obsolete by</strong></td>
+        <td>The <a target="_blank" href="https://groups.google.com/d/topic/scala-internals/k9_4yp2RS90/discussion">virtualized
+            pattern matcher</a></td>
+    </tr>
+    </tbody>
+</table>
+<div class="code-snippet">
+    <h3>What is the result of executing the following code?</h3>
+    <pre class="prettyprint lang-scala">
+val ij: (Int, Int) = ("3", "4")
+val (i, j): (Int, Int) = ("3", "4")
+</pre>
+    <ol>
+        <li>Prints:
+            <pre class="prettyprint lang-scala">
+ij: (3, 4)
+i: 3
+j: 4
+</pre>
+        </li>
+        <li>Both statements fail to compile</li>
+        <li>Both statements throw runtime exceptions</li>
+        <li id="correct-answer">The first statement fails to compile and the second throws a runtime exception</li>
+    </ol>
+</div>
+
+<div id="explanation" class="explanation">
+    <h3>Explanation</h3>
+    <p>
+        The former is an assignment of a tuple which is not type correct.
+        The latter is a pattern match which for which type information is
+        erased, so it will compile (with a warning) but throw an exception
+        at runtime.
+    </p>
+    <p>
+        Using a typed pattern (SLS &sect;8.1.2) instead of a variable pattern
+        results in the expected compiler error:
+    <pre class="prettyprint lang-scala">
+scala> val (i: Int, j: Int) = ("3", "4")
+&lt;console&gt;:7: error: scrutinee is incompatible with pattern type;
+ found   : Int
+ required: java.lang.String
+       val (i: Int, j: Int) = ("3", "4")
+               ^
+...
+&lt;console&gt;:7: error: scrutinee is incompatible with pattern type;
+ found   : Int
+ required: java.lang.String
+       val (i: Int, j: Int) = ("3", "4")
+                       ^
+...
+</pre>
+    </p>
+</div>
+

@@ -1,0 +1,95 @@
+<h1>Market Precedence</h1>
+<table class="table meta-table table-condensed">
+    <tbody>
+    <tr>
+        <td class="header-column"><strong>Contributed by</strong></td>
+        <td>A. P. Marki</td>
+    </tr>
+    <tr>
+        <td><strong>Source</strong></td>
+        <td><a target="_blank" href="https://groups.google.com/d/msg/scala-user/x_Y4uxe9ruc/MJ1QiFVy5ZAJ">scala-user
+            mailing list</a></td>
+    </tr>
+    <tr>
+        <td><strong>First tested with Scala version</strong></td>
+        <td>2.10.2</td>
+    </tr>
+    </tbody>
+</table>
+<div class="code-snippet">
+    <h3>What is the result of executing the following code?</h3>
+    <pre class="prettyprint lang-scala">
+class Markup {
+  def apply(normalPrice: Int) = normalPrice * 2
+}
+class TouristMarkup extends Markup {
+  override def apply(normalPrice: Int) = normalPrice * 20
+}
+def makeLabel(price: Int)(implicit m: Markup) = s"Price: ${m(price)}"
+
+object OldSkoolMarket {
+  def main(args: Array[String]): Unit = {
+    implicit val normalMarkup: Markup = new Markup
+    Console println makeLabel(3)
+    implicit val touristMarkup: TouristMarkup = new TouristMarkup
+    Console println makeLabel(5)
+  }
+}
+object HipNTrendyMarket extends App { // now extends App!
+  implicit val normalMarkup: Markup = new Markup
+  Console println makeLabel(3)
+  implicit val touristMarkup: TouristMarkup = new TouristMarkup
+  Console println makeLabel(5)
+}
+
+OldSkoolMarket main null
+HipNTrendyMarket main null
+</pre>
+    <ol>
+        <li>Prints:
+            <pre class="prettyprint lang-scala">
+60
+100
+60
+100
+</pre>
+        </li>
+        <li id="correct-answer">The definition of <tt>OldSkoolMarket</tt> fails to compile and the invocation of <tt>HipNTrendyMarket</tt>
+            throws a runtime exception
+        </li>
+        <li>The definition of <tt>OldSkoolMarket</tt> fails to compile and the invocation of <tt>HipNTrendyMarket</tt>
+            prints:
+            <pre class="prettyprint lang-scala">
+6
+100
+</pre>
+        </li>
+        <li>Both object definitions fail to compile</li>
+    </ol>
+</div>
+
+<div id="explanation" class="explanation">
+    <h3>Explanation</h3>
+    <p>
+        The implicit <tt>TouristMarkup</tt> is more specific than <tt>Markup</tt>
+        because <tt>TouristMarkup</tt> conforms to <tt>Markup</tt> but not conversely.
+        See the fourth bullet point of the definition of &quot;as specific as&quot; of
+        SLS &sect;6.26.3, which mentions &quot;existential duals&quot;.
+        In this context, the take-away is:
+    </p>
+    <blockquote><p style="font-size: 1.0em;">
+        The existential dual of every other type is the type itself.
+    </p></blockquote>
+    <p>
+        In the block body of <tt>OldSkoolMarket</tt>'s <tt>main</tt> method, the implicit value <tt>touristMarkup</tt>
+        is in scope when <tt>makeLabel(3)</tt> is first invoked. However, in accordance with the restrictions on forward
+        references described in SLS &sect;4, it cannot be referenced as it is not yet defined. As a result, <tt>OldSkoolMarket</tt>
+        fails to compile.
+    </p>
+    <p>
+        In the <tt>HipNTrendyMarket</tt>, the body of the object is not a block, even though it functions as <tt>HipNTrendyMarket</tt>'s
+        <tt>main</tt> method. This means that both implicits are in scope and <em>can</em> be referenced. Again, <tt>touristMarkup</tt>
+        is more specific and is chosen when <tt>makeLabel(3)</tt> is first invoked. However, at this point <tt>touristMarkup</tt>
+        is not yet initialized, leading to a <tt>NullPointerException</tt> at runtime.
+    </p>
+</div>

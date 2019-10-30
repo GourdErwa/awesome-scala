@@ -1,0 +1,59 @@
+<div id="title">
+    <h1>UPSTAIRS downstairs</h1>
+</div>
+<table class="table meta-table table-condensed">
+    <tbody>
+    <tr>
+        <td class="header-column"><strong>Contributed by</strong></td>
+        <td>Andrew Phillips &amp; Nermin Serifovic</td>
+    </tr>
+    <tr>
+        <td><strong>Source</strong></td>
+        <td><a target="_blank" href="http://stackoverflow.com/questions/2727612/scalas-tuple-unwrapping-nuance">Stack
+            Overflow</a></td>
+    </tr>
+    <tr>
+        <td><strong>First tested with Scala version</strong></td>
+        <td>2.10.0</td>
+    </tr>
+    </tbody>
+</table>
+<div class="code-snippet">
+    <h3>What is the result of executing the following code?</h3>
+    <pre class="prettyprint lang-scala">
+var IJ: (Int, Int) = (3, 4)
+var (I, J): (Int, Int) = (3, 4)
+</pre>
+    <ol>
+        <li>Prints:
+            <pre class="prettyprint lang-scala">
+IJ: (Int, Int) = (3, 4)
+I: Int = 3
+J: Int = 4
+</pre>
+        </li>
+        <li>Both statements fail to compile</li>
+        <li id="correct-answer">The first statement prints:
+            <pre class="prettyprint lang-scala">
+IJ: (Int, Int) = (3, 4)
+</pre>
+            and the second fails to compile
+        </li>
+        <li>The first statement prints:
+            <pre class="prettyprint lang-scala">
+IJ: (Int, Int) = (3, 4)
+</pre>
+            and the second one throws a runtime exception
+        </li>
+    </ol>
+</div>
+
+<div id="explanation" class="explanation">
+    <h3>Explanation</h3>
+    <p>
+        The former is an assignment of a tuple which is type correct. The
+        latter tries to match (3, 4) against two constants I and J – Scala
+        assumes that UPPERCASE variables in pattern matches are constants.
+    </p>
+</div>
+

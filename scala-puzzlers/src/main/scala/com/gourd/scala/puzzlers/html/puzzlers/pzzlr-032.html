@@ -1,0 +1,112 @@
+<h1>Type Extortion</h1>
+<table class="table meta-table table-condensed">
+    <tbody>
+    <tr>
+        <td class="header-column"><strong>Contributed by</strong></td>
+        <td>A. P. Marki</td>
+    </tr>
+    <tr>
+        <td><strong>Source</strong></td>
+        <td><a target="_blank" href="https://groups.google.com/d/topic/scala-user/KfNiYa1YoPM/discussion">scala-language
+            mailing list</a></td>
+    </tr>
+    <tr>
+        <td><strong>First tested with Scala version</strong></td>
+        <td>2.10.1</td>
+    </tr>
+    </tbody>
+</table>
+<div class="code-snippet">
+    <h3>What is the result of executing the following code?</h3>
+    <pre class="prettyprint lang-scala">
+// cap it at ... wait for it ... ten!
+val (x, y) = List(1, 3, 5).lazyZip(List(2, 4, 6)) find (_._1 > 10) getOrElse (10)
+Console println s"Found $x"
+</pre>
+    <ol>
+        <li>Prints:
+            <pre class="prettyprint lang-scala">
+Found 10
+</pre>
+        </li>
+        <li>Prints:
+            <pre class="prettyprint lang-scala">
+Found ()
+</pre>
+        </li>
+        <li>Fails to compile</li>
+        <li id="correct-answer">Throws a runtime exception</li>
+    </ol>
+</div>
+
+<div id="explanation" class="explanation">
+    <h3>Explanation</h3>
+    <blockquote>
+        <p style="font-size: 1.0em;">
+            The bully who stole your milk money used to say: "Give it to me &mdash; or else!"
+        </p>
+        <p style="font-size: 1.0em;">
+            But he was never satisfied and would always take as much as he could get.
+        </p>
+    </blockquote>
+    <p>
+        In Scala, the "or else" idioms, such as <a
+            href="http://www.scala-lang.org/api/current/index.html#scala.Option@orElse[B>:A](alternative:=>Option[B]):Option[B]"
+            target="_blank"><tt>Option.orElse</tt></a>, <tt>Option.getOrElse</tt>, <a
+            href="http://www.scala-lang.org/api/current/index.html#scala.util.Try@recover[U>:T](f:PartialFunction[Throwable,U]):scala.util.Try[U]"
+            target="_blank"><tt>Try.recover</tt></a> and <a
+            href="http://www.scala-lang.org/api/current/index.html#scala.concurrent.Future@recover[U>:T](pf:PartialFunction[Throwable,U])(implicitexecutor:scala.concurrent.ExecutionContext):scala.concurrent.Future[U]"
+            target="_blank"><tt>Future.recover</tt></a>, are defined to accept a wider type than you start with:
+    </p>
+    <p>
+    <pre class="prettyprint lang-scala">
+def getOrElse[B >: A](default: => B): B
+</pre>
+    </p>
+    <p>
+        If you don't supply a value of the type it wants, it will take whatever it can, including <tt>Any</tt> thing at
+        all.
+    </p>
+    <p>
+        In this case, <tt>Any</tt> is inferred for <tt>B</tt>, and there is no type error to show that an <tt>Int</tt>
+        was used as an alternative for a pair of <tt>Ints</tt>. In the absence of a type on the pattern definition, the
+        pattern match throws a MatchError at runtime:
+    <pre class="prettyprint lang-scala">
+scala> val (x, y) = (List(1, 3, 5), List(2, 4, 6)).zipped find (_._1 > 10) getOrElse (10)
+scala.MatchError: 10 (of class java.lang.Integer)
+</pre>
+    </p>
+    Even without a mistaken change in arity, similar errors are possible with swapped elements:
+    </p>
+    <p>
+    <pre class="prettyprint lang-scala">
+def howToPronounce(numAndName: Option[(Int, String)]) = {
+  val (num, name) = numAndName getOrElse ("eight", 8)
+  println(s"The word for $num is '$name'")
+}
+howToPronounce(Some((7, "seven")))
+howToPronounce(None)
+</pre>
+    </p>
+    <p>
+        Since <tt>orElse</tt> often represents a default value that is typically not exercised in normal usage,
+        the correctness of this branch of the code path should be checked by testing.
+        And that's why we have code coverage tools.
+    </p>
+    <p>
+        A way to avoid this issue is to specify the desired type explicitly:
+    <pre class="prettyprint lang-scala">
+val (num, name): (Int, String) = Some((7, "seven")) getOrElse Pair("eight", 8)
+<console>:10: error: type mismatch;
+ found   : String("eight")
+ required: Int
+       val (num, name): (Int, String) = Some((7, "seven")) getOrElse Pair("eight", 8)
+                                                                          ^
+<console>:10: error: type mismatch;
+ found   : Int(8)
+ required: String
+       val (num, name): (Int, String) = Some((7, "seven")) getOrElse Pair("eight", 8)
+                                                                                   ^
+</pre>
+    </p>
+</div>

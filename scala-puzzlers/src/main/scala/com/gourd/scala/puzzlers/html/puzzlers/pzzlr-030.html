@@ -1,0 +1,93 @@
+<h1>Double Trouble</h1>
+<table class="table meta-table table-condensed">
+    <tbody>
+    <tr>
+        <td class="header-column"><strong>Contributed by</strong></td>
+        <td>Andrew Phillips<br/>Updated based on suggestions by Marconi Lanna</td>
+    </tr>
+    <tr>
+        <td><strong>Source</strong></td>
+        <td><a target="_blank" href="https://groups.google.com/forum/?fromgroups=#!topic/scala-language/fWnULi1SH44">scala-language
+            mailing list</a></td>
+    </tr>
+    <tr>
+        <td><strong>First tested with Scala version</strong></td>
+        <td>2.10.0</td>
+    </tr>
+    <tr>
+        <td><strong>Made obsolete by</strong></td>
+        <td><a href="https://github.com/scala/scala/commit/878e7d3e0d14633d19bac47dc9b532a54eab6379" target="_blank">2.13
+            Collections redesign</a></td>
+    </tr>
+    </tbody>
+</table>
+<div class="code-snippet">
+    <h3>What is the result of executing the following code?</h3>
+    <pre class="prettyprint lang-scala">
+println(Seq(1.0, Double.NaN, 1.1).max)
+println(Seq(1.0, 1.1, Double.NaN).max)
+</pre>
+    <ol>
+        <li>Prints:
+            <pre class="prettyprint lang-scala">
+1.1
+1.1
+</pre>
+        </li>
+        <li id="correct-answer">Prints:
+            <pre class="prettyprint lang-scala">
+1.1
+NaN
+</pre>
+        </li>
+        <li>Prints:
+            <pre class="prettyprint lang-scala">
+NaN
+NaN
+</pre>
+        </li>
+        <li>Prints:
+            <pre class="prettyprint lang-scala">
+1.0
+1.1
+</pre>
+        </li>
+    </ol>
+</div>
+
+<div id="explanation" class="explanation">
+    <h3>Explanation</h3>
+    <p>
+        <tt>Double</tt> extends <tt>Ordering</tt>, which as a total order requires that a comparison between two values
+        yield either a <a
+            href="https://github.com/scala/scala/blob/2.12.x/src/library/scala/math/Ordering.scala#L77-L85"
+            target="_blank">positive, negative or zero result</a>. However, <a
+            href="https://github.com/scala/scala/commit/460bbc1276fb4ba83b9bcbdc7f7ba475b352b7c6" target="_blank">since
+        2.10.0</a> the comparison operations <tt>gt</tt>, <tt>lt</tt> and <tt>equiv</tt> for <tt>Double</tt> are
+        implemented by the primitive operators <tt>&gt;</tt>, <tt>&lt;</tt> and <tt>==</tt>. These are compliant with
+        the IEEE floating-point specification, so all comparisons with <tt>NaN</tt> are false.
+    </p>
+    <p>
+        This violates the expectations of the implementation of <tt>max</tt> in
+        <tt>TraversableOnce</tt>, which tries to keep track of the greatest
+        element so far by checking whether it is <a
+            href="https://github.com/scala/scala/blob/2.12.x/src/library/scala/collection/TraversableOnce.scala#L230"
+            target="_blank">larger than or equal to the next element</a>. If the comparison fails, the next element is
+        assumed to be greater and
+        is carried forward.
+    </p>
+    <p>
+        In the first case, this results in <tt>Double.NaN</tt> being chosen as
+        &quot;greatest-so-far&quot; after the first comparison, since <tt>1.0</tt>
+        is not larger than or equal to <tt>Double.NaN</tt>. In the next and final
+        comparison for the first sequence, <tt>Double.NaN</tt> is in turn
+        found to be not larger than or equal to <tt>1.1</tt>, so <tt>1.1</tt> is
+        returned as the maximum value.
+    </p>
+    <p>
+        The final comparison for the second sequence, on the other hand, concludes
+        that <tt>1.1</tt> (the greatest value up to that point) is <em>not</em>
+        larger than or equal to <tt>Double.NaN</tt>. Thus <tt>Double.NaN</tt> is
+        returned as the maximum value instead.
+    </p>
+</div>
