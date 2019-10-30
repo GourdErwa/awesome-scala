@@ -18,7 +18,7 @@ scala 语言核心特性简介，scala 特性深度分析
 * 正则表达式                       
 * 对象提取器                       
 * For 表达式                      
-* 泛型类&类型上下界&协变/逆变/不变             
+* 泛型类&类型上下界&协变/逆变/不变&视图边界             
 * 内部类                           
 * 抽象类型                        
 * 复合类型                        
@@ -32,11 +32,14 @@ scala 语言核心特性简介，scala 特性深度分析
 * examples（工具类使用示例）                      
 
 # scala特性-深度分析（未完成）
+
+# 参考
 - 官方文档：[scala-lang-overviews](https://docs.scala-lang.org/overviews/index.html)
     -  [scala-2.13的集合体系结构](https://docs.scala-lang.org/overviews/core/architecture-of-scala-213-collections.html)
     -  [scala-2.13实现自定义集合](https://docs.scala-lang.org/overviews/core/custom-collections.html#final-version-of-capped-class)
     -  [​​scala-2.13添加自定义集合操作](https://docs.scala-lang.org/overviews/core/custom-collection-operations.html)
-- 书籍：[Scala函数式编程](https://github.com/fpinscala/fpinscala)  
+- 书籍：[Scala函数式编程](https://github.com/fpinscala/fpinscala)
+- 网站：[scala-谜题](http://scalapuzzlers.com/)  
 ## 示例内容
 示例内容参考包声明：[com.gourd.scala.overviews](./src/main/scala/com/gourd/scala/overviews/package.scala)
 

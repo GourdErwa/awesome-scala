@@ -7,16 +7,18 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/gourderwa/scala-advanced/badge)](https://www.codefactor.io/repository/github/gourderwa/scala-advanced)
 # 项目结构
 ## 模块说明
-|模块|说明|目的|
-|:---|:---|:---|
-|[scala-base](./scala-base)|语言核心特性、特性深度分析示例、常用函数|入门|
-|[scala-exercises-stdlib](./scala-exercises-stdlib)|练习题-std-lib|巩固基础|
-|[scala-exercises-fpinscala（进行中）](./scala-exercises-fpinscala)|练习题-Scala函数式编程|函数式编程思想进阶|
-|[scala-app-json](./scala-app-json)|scala-json 操作（json4s）|类库扩展|
-|[scala-app-shapeless（进行中）](./scala-app-shapeless)|shapeless 泛型编程库|类库扩展|
-|[scala-app-cats（进行中）](./scala-app-cats)|cats 库相关操作|类库扩展|
-|[scala-resources-notes](./scala-resources-notes)|md格式笔记|提升|
-|[scala-resources-book](./scala-resources-book)|scala-书籍|提升|
+|模块|说明|目的|完成|
+|:---|:---|:---|:---|
+|[scala-base](./scala-base)|语言核心特性、特性深度分析示例、常用函数|入门|√|
+|[scala-exercises-stdlib](./scala-exercises-stdlib)|练习题-std-lib|巩固基础|√|
+|[scala-exercises-fpinscala](./scala-exercises-fpinscala)|练习题-Scala函数式编程|函数式编程思想进阶|×|
+|[scala-puzzlers](./scala-puzzlers)|scala-谜题|巩固基础|×|
+|[scala-test](./scala-test)|scalatest 类库|类库扩展|×|
+|[scala-app-json](./scala-app-json)|scala-json 操作（json4s）|类库扩展|√|
+|[scala-app-shapeless](./scala-app-shapeless)|shapeless 泛型编程库|类库扩展|×|
+|[scala-app-cats](./scala-app-cats)|cats 库相关操作|类库扩展|×|
+|[scala-resources-notes](./scala-resources-notes)|md格式笔记|提升|√|
+|[scala-resources-book](./scala-resources-book)|scala-书籍|提升|√|
 
 ## 编码风格
 * 模块内容参考`README.md`文件声明

@@ -20,7 +20,7 @@ object ViewBoundsApp extends GourdApp {
     def f[A <% Ordered[A]](a: A, b: A) = if (a < b) a else b
 
     // 等价于
-    def f[A](a: A, b: A)(implicit ev$1: A => Ordered[A]) = if (a < b) a else b
+    //    def f[A](a: A, b: A)(implicit ev$1: A => Ordered[A]) = if (a < b) a else b
   }
 }
 

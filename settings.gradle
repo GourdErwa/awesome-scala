@@ -9,6 +9,8 @@
 
 rootProject.name = 'scala-advanced'
 include 'scala-base'
+include 'scala-puzzlers'
+include 'scala-test'
 
 include 'scala-exercises-stdlib'
 include 'scala-exercises-fpinscala'

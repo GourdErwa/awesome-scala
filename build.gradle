@@ -53,7 +53,7 @@ subprojects {
 
         // Use Scalatest for testing our library
         testImplementation "junit:junit:4.12"
-        //testImplementation "org.scalatest:scalatest_sjs1.0.0-M8_2.13:3.1.0-SNAP13"
+        compile group: 'org.scalatest', name: 'scalatest_2.13', version: '3.2.0-M1'
 
     }
     tasks.withType(JavaCompile) {
