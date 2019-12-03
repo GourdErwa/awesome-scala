@@ -1,6 +1,6 @@
 package com.gourd.scala.base.abstract_type_members
 
-import org.slf4j.LoggerFactory
+import com.gourd.scala.MainApp
 
 /** 抽象类型
   * 特质和抽象类可以包含一个抽象类型成员，意味着实际类型可由具体实现来确定。
@@ -8,15 +8,11 @@ import org.slf4j.LoggerFactory
   *
   * @author Li.Wei by 2019-08-06
   */
-object MyApp {
-  private val logger = LoggerFactory.getLogger("MyApp")
+object Example1 extends MainApp
 
-  def main(args: Array[String]): Unit = {}
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
 // 抽象类型成员:使用 type 定义抽象类型
-///////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
 trait Buffer {
   type T
   val element: T
@@ -48,9 +44,9 @@ object Test {
   }
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
 //类的类型参数:使用 泛型 定义抽象类型
-///////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
 abstract class Buffer1[+T] { // 该处需协变，以支持匿名实现类初始化
   val element: T
 }
@@ -63,7 +59,7 @@ class IntSeqBuf1 extends SeqBuffer1[Int, List[Int]] {
   override val element = List(1, 2)
 }
 
-object Test1 {
+object Test1 extends MainApp {
 
   // 需要注意的是为了隐藏从方法newIntSeqBuf返回的对象的具体序列实现的类型，这里的型变标号（+T <: Seq[U]）是必不可少的。
   // 此外要说明的是，有些情况下用类型参数替换抽象类型是行不通的。
@@ -72,9 +68,7 @@ object Test1 {
       override val element = List(e1, e2)
     }
 
-  def main(args: Array[String]): Unit = {
-    val buf: SeqBuffer1[Int, Seq[Int]] = newIntSeqBuf1(7, 8)
-    println("length = " + buf.length)
-    println("content = " + buf.element)
-  }
+  val buf: SeqBuffer1[Int, Seq[Int]] = newIntSeqBuf1(7, 8)
+  println("length = " + buf.length)
+  println("content = " + buf.element)
 }

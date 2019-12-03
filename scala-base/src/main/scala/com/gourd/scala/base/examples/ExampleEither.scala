@@ -1,6 +1,6 @@
 package com.gourd.scala.base.examples
 
-import org.slf4j.LoggerFactory
+import com.gourd.scala.MainApp
 
 /** [[Either]]
   * 程序设计中经常会有这样的需求，一个函数（或方法）在传入不同参数时会返回不同的值。
@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory
   *
   * @author Li.Wei by 2019-08-06
   */
-object ExampleEither {
+object ExampleEither extends MainApp {
 
   type Rectangle2 = (Double, Double)
   type Circle2 = Double
@@ -24,13 +24,9 @@ object ExampleEither {
       case Right(r) => math.Pi * r * r
     }
 
-  private val logger = LoggerFactory.getLogger("MyApp")
+  area2(rect2)
+  // res4: Double = 12.0
 
-  def main(args: Array[String]): Unit = {
-    area2(rect2)
-    // res4: Double = 12.0
-
-    area2(circ2)
-    // res5: Double = 3.141592653589793
-  }
+  area2(circ2)
+  // res5: Double = 3.141592653589793
 }

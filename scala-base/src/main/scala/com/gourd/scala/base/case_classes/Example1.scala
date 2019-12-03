@@ -1,6 +1,6 @@
 package com.gourd.scala.base.case_classes
 
-import org.slf4j.LoggerFactory
+import com.gourd.scala.MainApp
 
 /**
   * 案例类
@@ -9,10 +9,7 @@ import org.slf4j.LoggerFactory
   *
   * @author Li.Wei by 2019-08-06
   */
-object MyApp {
-  private val logger = LoggerFactory.getLogger("MyApp")
-
-  def main(args: Array[String]): Unit = {}
+object Example1 extends MainApp {
 
   // 定义一个案例类 ， 默认为 val 不可变类型
   case class Message(val sender: String, var recipient: String, body: String = "default val")

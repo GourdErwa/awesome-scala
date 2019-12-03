@@ -1,6 +1,6 @@
 package com.gourd.scala.base.closures
 
-import org.slf4j.LoggerFactory
+import com.gourd.scala.MainApp
 
 /**
   * 闭包
@@ -12,20 +12,17 @@ import org.slf4j.LoggerFactory
   * }}}
   * @author Li.Wei by 2019-10-19
   */
-object MyApp {
-  private val logger = LoggerFactory.getLogger("MyApp")
+object Example1 extends MainApp {
 
-  def main(args: Array[String]): Unit = {
+  // 以变量方式定义一个函数
+  {
+    val factor = 3
+    val closures: Int => Int = (i: Int) => i * factor // 返回值依赖外部的变量factor
+    logger.info(s"closures(10)=${closures(10)}")
+  }
 
-    // 以变量方式定义一个函数
-    {
-      val factor = 3
-      val closures: Int => Int = (i: Int) => i * factor // 返回值依赖外部的变量factor
-      logger.info(s"closures(10)=${closures(10)}")
-    }
-
-    // 以方法方式定义一个函数
-    {
+  // 以方法方式定义一个函数
+  {
       val factor = 3
 
       def closures(i: Int): Int = factor * i
@@ -43,5 +40,4 @@ object MyApp {
       logger.info(s"closures1=${closures1(1)}")
       logger.info(s"closures2=${closures2(2)}")
     }
-  }
 }

@@ -1,16 +1,11 @@
 package com.gourd.scala.base.mixin_class_composition
 
-import org.slf4j.LoggerFactory
+import com.gourd.scala.MainApp
 
 /**
   * @author Li.Wei by 2019-08-06
   */
-object App2 {
-  private val logger = LoggerFactory.getLogger("App2")
-
-  def main(args: Array[String]): Unit = {
-  }
-}
+object Example2 extends MainApp
 
 abstract class AbsIterator {
   type T
@@ -38,7 +33,7 @@ trait RichIterator extends AbsIterator {
   def foreach(f: T => Unit): Unit = while (hasNext) f(next())
 }
 
-object StringIteratorTest extends App {
+object StringIteratorTest extends MainApp {
 
   // 我们要把StringIterator和RichIterator 中的功能组合成一个类。
   class RichStringIter extends StringIterator("Scala") with RichIterator

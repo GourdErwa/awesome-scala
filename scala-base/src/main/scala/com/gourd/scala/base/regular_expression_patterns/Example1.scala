@@ -1,6 +1,6 @@
 package com.gourd.scala.base.regular_expression_patterns
 
-import org.slf4j.LoggerFactory
+import com.gourd.scala.MainApp
 
 import scala.util.matching.Regex
 
@@ -9,10 +9,7 @@ import scala.util.matching.Regex
   *
   * @author Li.Wei by 2019-08-06
   */
-object MyApp {
-  private val logger = LoggerFactory.getLogger("MyApp")
-
-  def main(args: Array[String]): Unit = {}
+object Example1 extends MainApp {
 
   {
     // 上例中，numberPattern的类型是正则表达式类Regex，其作用是确保密码中包含一个数字。

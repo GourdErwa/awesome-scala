@@ -1,6 +1,6 @@
 package com.gourd.scala.base.generic_classes
 
-import com.gourd.scala.GourdApp
+import com.gourd.scala.MainApp
 
 import scala.reflect.ClassTag
 
@@ -21,16 +21,11 @@ import scala.reflect.ClassTag
   * }}}
   * @author Li.Wei by 2019-08-07
   */
-object ContextBoundsApp extends GourdApp {
+object ContextBoundsApp extends MainApp {
 
-  def main(args: Array[String]): Unit = {
-    def mkArray[T: ClassTag](elems: T*): Array[T] = Array[T](elems: _*)
+  def mkArray[T: ClassTag](elems: T*): Array[T] = Array[T](elems: _*)
 
-    val ints = mkArray(1, 2, 3)
-    logger.info(s"$ints")
-  }
+  val ints = mkArray(1, 2, 3)
+  logger.info(s"$ints")
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-///////////////////////////////////////////////////////////////////////////////////////////////////////

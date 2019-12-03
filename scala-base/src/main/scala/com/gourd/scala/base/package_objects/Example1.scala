@@ -1,7 +1,7 @@
 package com.gourd.scala.base.package_objects
 
+import com.gourd.scala.MainApp
 import com.gourd.scala.base.package_objects.gardening.fruits
-import org.slf4j.LoggerFactory
 
 /** 包对象
   * Scala 提供包对象作为在整个包中方便的共享使用的容器。
@@ -13,10 +13,7 @@ import org.slf4j.LoggerFactory
   *
   * @author Li.Wei by 2019-08-06
   */
-object MyApp {
-  private val logger = LoggerFactory.getLogger("MyApp")
-
-  def main(args: Array[String]): Unit = {}
+object Example1 extends MainApp {
 }
 
 // in file PrintPlanted.scala

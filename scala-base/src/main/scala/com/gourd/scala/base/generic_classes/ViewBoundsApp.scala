@@ -1,6 +1,6 @@
 package com.gourd.scala.base.generic_classes
 
-import com.gourd.scala.GourdApp
+import com.gourd.scala.MainApp
 
 /** 视图界定 View Bounds ， 目前已废弃该用法，推荐传入隐士函数进行转换
   *
@@ -14,16 +14,11 @@ import com.gourd.scala.GourdApp
   *
   * @author Li.Wei by 2019-08-07
   */
-object ViewBoundsApp extends GourdApp {
+object ViewBoundsApp extends MainApp {
 
-  def main(args: Array[String]): Unit = {
-    def f[A <% Ordered[A]](a: A, b: A) = if (a < b) a else b
+  def f[A](a: A, b: A)(implicit ev$1: A => Ordered[A]) = if (a < b) a else b
 
-    // 等价于
-    //    def f[A](a: A, b: A)(implicit ev$1: A => Ordered[A]) = if (a < b) a else b
-  }
+  // 等价于
+  //    def f[A](a: A, b: A)(implicit ev$1: A => Ordered[A]) = if (a < b) a else b
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-///////////////////////////////////////////////////////////////////////////////////////////////////////

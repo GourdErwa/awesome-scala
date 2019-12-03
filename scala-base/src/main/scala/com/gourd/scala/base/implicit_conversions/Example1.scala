@@ -1,6 +1,6 @@
 package com.gourd.scala.base.implicit_conversions
 
-import org.slf4j.LoggerFactory
+import com.gourd.scala.MainApp
 
 /** 隐式转换
   * 一个从类型 S 到类型 T 的隐式转换由一个函数类型 S => T 的隐式值来定义，或者由一个可转换成所需值的隐式方法来定义。
@@ -16,8 +16,7 @@ import org.slf4j.LoggerFactory
   *
   * @author Li.Wei by 2019-08-06
   */
-object MyApp {
-  val logger = LoggerFactory.getLogger("MyApp")
+object Example1 extends MainApp {
 
   import scala.language.implicitConversions
 
@@ -32,5 +31,4 @@ object MyApp {
     // "abc".map(_.toInt)
   }
 
-  def main(args: Array[String]): Unit = {}
 }

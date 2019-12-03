@@ -1,6 +1,6 @@
 package com.gourd.scala.base.traits
 
-import org.slf4j.LoggerFactory
+import com.gourd.scala.MainApp
 
 /**
   * 特质 (Traits) 用于在类 (Class)之间共享程序接口 (Interface)和字段 (Fields)。
@@ -8,15 +8,11 @@ import org.slf4j.LoggerFactory
   *
   * @author Li.Wei by 2019-08-06
   */
-object MyApp {
-  private val logger = LoggerFactory.getLogger("MyApp")
+object Example1 extends MainApp {
 
-  def main(args: Array[String]): Unit = {
-    val iterator = new IntIterator(10)
-    logger.info("{}", iterator.next()) // 0
-    logger.info("{}", iterator.next()) // 1
-  }
-
+  val iterator = new IntIterator(10)
+  logger.info("{}", iterator.next()) // 0
+  logger.info("{}", iterator.next()) // 1
 
   trait Iterator[A] {
     val a: Int = 1

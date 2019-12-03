@@ -1,6 +1,6 @@
 package com.gourd.scala.base.mixin_class_composition
 
-import org.slf4j.LoggerFactory
+import com.gourd.scala.MainApp
 
 /**
   * @author Li.Wei by 2019-08-06
@@ -23,12 +23,8 @@ trait C extends A {
   */
 class D extends B with C
 
-object App1 {
-  private val logger = LoggerFactory.getLogger("App1")
-
-  def main(args: Array[String]): Unit = {
-    val d = new D
-    logger.info(d.message) // I'm an instance of class B
-    logger.info(d.loudMessage) // I'M AN INSTANCE OF CLASS B
-  }
+object Example1 extends MainApp {
+  val d = new D
+  logger.info(d.message) // I'm an instance of class B
+  logger.info(d.loudMessage) // I'M AN INSTANCE OF CLASS B
 }

@@ -1,5 +1,7 @@
 package com.gourd.scala.base.extractor_objects
 
+import com.gourd.scala.MainApp
+
 import scala.util.Random
 
 /**
@@ -10,7 +12,7 @@ import scala.util.Random
   *
   * @author Li.Wei by 2019-08-05
   */
-object MyApp {
+object Example1 extends MainApp {
 
   def apply(name: String) = s"$name--${Random.nextLong}"
 
@@ -19,20 +21,18 @@ object MyApp {
     if (stringArray.tail.nonEmpty) Some(stringArray.head) else None
   }
 
-  def main(args: Array[String]): Unit = {
-    val customer1ID = MyApp("SukYoung") // SukYoung--23098234908
-    customer1ID match {
-      case MyApp(name) => println(name) // prints SukYoung
-      case _ => println("Could not extract a CustomerID")
-    }
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////
-    // unapply
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////
-    val customer2ID = MyApp("Nico")
-    val MyApp(name) = customer2ID
-    println(name) // prints Nico
-    //上面的代码等价于 val name = MyApp.unapply(customer2ID).get
-
+  val customer1ID = Example1("SukYoung") // SukYoung--23098234908
+  customer1ID match {
+    case Example1(name) => println(name) // prints SukYoung
+    case _ => println("Could not extract a CustomerID")
   }
+  ///////////////////////////////////////////////////////////////////////////////////
+  // unapply
+  ///////////////////////////////////////////////////////////////////////////////////
+  val customer2ID = Example1("Nico")
+  val Example1(name) = customer2ID
+  println(name) // prints Nico
+  //上面的代码等价于 val name = MyApp.unapply(customer2ID).get
+
 }
 

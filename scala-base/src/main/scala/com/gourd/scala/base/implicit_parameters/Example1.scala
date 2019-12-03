@@ -1,7 +1,6 @@
 package com.gourd.scala.base.implicit_parameters
 
-import com.gourd.scala.base.implicit_parameters.MyApp.logger
-import org.slf4j.LoggerFactory
+import com.gourd.scala.MainApp
 
 /** 隐式参数
   * 方法可以具有 隐式 参数列表，由参数列表开头的 implicit 关键字标记。
@@ -15,11 +14,7 @@ import org.slf4j.LoggerFactory
   *
   * @author Li.Wei by 2019-08-06
   */
-object MyApp {
-  val logger = LoggerFactory.getLogger("MyApp")
-
-  def main(args: Array[String]): Unit = {}
-}
+object Example1 extends MainApp
 
 abstract class Monoid[A] {
   def add(x: A, y: A): A
@@ -27,7 +22,7 @@ abstract class Monoid[A] {
   def unit: A
 }
 
-object ImplicitTest {
+object ImplicitTest extends MainApp {
   implicit val stringMonoid: Monoid[String] = new Monoid[String] {
     def add(x: String, y: String): String = x concat y
 
@@ -44,8 +39,6 @@ object ImplicitTest {
     if (xs.isEmpty) m.unit
     else m.add(xs.head, sum(xs.tail))
 
-  def main(args: Array[String]): Unit = {
-    logger.info(s"${sum(List(1, 2, 3))}") // uses IntMonoid implicitly
-    logger.info(s"${sum(List("a", "b", "c"))}") // uses StringMonoid implicitly
-  }
+  logger.info(s"${sum(List(1, 2, 3))}") // uses IntMonoid implicitly
+  logger.info(s"${sum(List("a", "b", "c"))}") // uses StringMonoid implicitly
 }

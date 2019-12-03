@@ -1,6 +1,6 @@
 package com.gourd.scala.base.multiple_parameter_lists
 
-import org.slf4j.LoggerFactory
+import com.gourd.scala.MainApp
 
 /**
   * 方法可以定义多个参数列表，当使用较少的参数列表调用多参数列表的方法时，会产生一个新的函数，该函数接收剩余的参数列表作为其参数。这被称为柯里化。
@@ -10,10 +10,7 @@ import org.slf4j.LoggerFactory
   *
   * @author Li.Wei by 2019-08-06
   */
-object MyApp {
-  private val logger = LoggerFactory.getLogger("MyApp")
-
-  def main(args: Array[String]): Unit = {}
+object Example1 extends MainApp {
 
   {
     // 函数定义 int2int 等价于 int2intFunc1 等价于 int2intFunc2
@@ -26,11 +23,11 @@ object MyApp {
 
   {
     val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-    val res = numbers.foldLeft(0)((m, n) => m * n)
-    logger.info(s"$res") // 55
+    val res = numbers.foldLeft(0)((m, n) => m + n)
+    logger.info(s"res =:$res") // 55
 
     // 单一的函数参数
-    val r1 = numbers.foldLeft(0) { (m: Int, n: Int) => m * n }
+    val r1 = numbers.foldLeft(0) { (m: Int, n: Int) => m + n }
 
     // 注意使用多参数列表时，我们还可以利用Scala的类型推断来让代码更加简洁（如下所示），而如果没有多参数列表，这是不可能的。
     // numbers.foldLeft(0)(_ + _)

@@ -1,6 +1,6 @@
 package com.gourd.scala.base.self_types
 
-import org.slf4j.LoggerFactory
+import com.gourd.scala.MainApp
 
 /**
   * 自类型
@@ -35,11 +35,9 @@ class VerifiedTweeter(val username_ : String) extends Tweeter with User { // 我
 }
 
 
-object MyApp {
-  private val logger = LoggerFactory.getLogger("MyApp")
+object Example1 extends MainApp {
 
   val realBeyoncé = new VerifiedTweeter("Beyoncé")
   realBeyoncé.tweet("Just spilled my glass of lemonade") // 打印出 "real Beyoncé: Just spilled my glass of lemonade"
 
-  def main(args: Array[String]): Unit = {}
 }

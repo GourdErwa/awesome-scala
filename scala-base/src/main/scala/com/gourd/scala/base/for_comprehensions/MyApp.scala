@@ -1,6 +1,6 @@
 package com.gourd.scala.base.for_comprehensions
 
-import org.slf4j.LoggerFactory
+import com.gourd.scala.MainApp
 
 /**
   * Scala 提供一个轻量级的标记方式用来表示 序列推导。推导使用形式为 for (enumerators) yield e 的 for 表达式，
@@ -12,10 +12,7 @@ import org.slf4j.LoggerFactory
   *
   * @author Li.Wei by 2019-08-06
   */
-object MyApp {
-  private val logger = LoggerFactory.getLogger("MyApp")
-
-  def main(args: Array[String]): Unit = {}
+object MyApp extends MainApp {
 
   /*
   基础语法
