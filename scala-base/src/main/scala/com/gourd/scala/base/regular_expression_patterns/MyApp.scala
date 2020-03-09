@@ -5,8 +5,9 @@ import org.slf4j.LoggerFactory
 import scala.util.matching.Regex
 
 /**
-  * 正则表达式是用来找出数据中的指定模式（或缺少该模式）的字符串。.r方法可使任意字符串变成一个正则表达式。
-  *
+  * 正则表达式是用来找出数据中的指定模式（或缺少该模式）的字符串。
+  * .r方法可使任意字符串变成一个正则表达式。
+  * 还可以使用括号来同时匹配多组正则表达式。
   * @author Li.Wei by 2019-08-06
   */
 object MyApp {
@@ -14,8 +15,11 @@ object MyApp {
 
   def main(args: Array[String]): Unit = {}
 
+  /**
+    * 示例
+    */
   {
-    // 上例中，numberPattern的类型是正则表达式类Regex，其作用是确保密码中包含一个数字。
+    // numberPattern的类型是正则表达式类Regex，其作用是确保密码中包含一个数字。
     val numberPattern: Regex = "[0-9]".r
     numberPattern.findFirstMatchIn("awesomepassword") match {
       case Some(_) => logger.info("Password OK")
@@ -25,7 +29,7 @@ object MyApp {
 
   logger.info("> ------------------------------------------")
 
-  // 你还可以使用括号来同时匹配多组正则表达式。
+  // 多组正则表达式。
   {
     val keyValPattern: Regex = "([0-9a-zA-Z-#() ]+): ([0-9a-zA-Z-#() ]+)".r
 

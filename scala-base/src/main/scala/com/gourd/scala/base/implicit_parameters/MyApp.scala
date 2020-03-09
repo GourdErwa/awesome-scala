@@ -12,40 +12,46 @@ import org.slf4j.LoggerFactory
   * 2.然后，它在所有伴生对象中查找与隐式候选类型相关的有隐式标记的成员。
   *
   * 更加详细的关于 Scala 隐式参数的指南请参考 https://docs.scala-lang.org/tutorials/FAQ/finding-implicits.html
-  *
   * @author Li.Wei by 2019-08-06
   */
 object MyApp {
   val logger = LoggerFactory.getLogger("MyApp")
 
   def main(args: Array[String]): Unit = {}
-}
 
-abstract class Monoid[A] {
-  def add(x: A, y: A): A
+  /**
+    * 示例
+    */
+  {
+    abstract class Monoid[A] {
+      def add(x: A, y: A): A
 
-  def unit: A
-}
+      def unit: A
+    }
+    // 隐式参数
+    implicit val stringMonoid: Monoid[String] = new Monoid[String] {
+      def add(x: String, y: String): String = x concat y
 
-object ImplicitTest {
-  implicit val stringMonoid: Monoid[String] = new Monoid[String] {
-    def add(x: String, y: String): String = x concat y
+      def unit: String = ""
+    }
+    // 隐式参数
+    implicit val intMonoid: Monoid[Int] = new Monoid[Int] {
+      def add(x: Int, y: Int): Int = x + y
 
-    def unit: String = ""
-  }
+      def unit: Int = 0
+    }
 
-  implicit val intMonoid: Monoid[Int] = new Monoid[Int] {
-    def add(x: Int, y: Int): Int = x + y
+    // 隐式参数m，如果可以找到隐式Monoid[A]用于隐式参数m，我们在调用sum方法时只需要传入xs参数。
+    def sum[A](xs: List[A])(implicit m: Monoid[A]): A =
+      if (xs.isEmpty) m.unit
+      else m.add(xs.head, sum(xs.tail))
 
-    def unit: Int = 0
-  }
-
-  def sum[A](xs: List[A])(implicit m: Monoid[A]): A =
-    if (xs.isEmpty) m.unit
-    else m.add(xs.head, sum(xs.tail))
-
-  def main(args: Array[String]): Unit = {
-    logger.info(s"${sum(List(1, 2, 3))}") // uses IntMonoid implicitly
-    logger.info(s"${sum(List("a", "b", "c"))}") // uses StringMonoid implicitly
+    // scala会在上下文寻找隐式值
+    // 由于List(1,2,3)的类型为List[Int]，并且只传入了xs，因此会寻找Monoid[Int]的隐式参数
+    // intMonoid是一个隐式定义，可以在main中直接访问。并且它的类型也正确，因此它会被自动传递给sum方法
+    println(sum(List(1, 2, 3))) // 6
+    // 由于List("a", "b", "c")的类型为List[String]，并且只传入了xs，因此会寻找Monoid[String]的隐式参数
+    // stringMonoid是一个隐式定义，可以在main中直接访问。并且它的类型也正确，因此它会被自动传递给sum方法
+    println(sum(List("a", "b", "c"))) // abc
   }
 }
