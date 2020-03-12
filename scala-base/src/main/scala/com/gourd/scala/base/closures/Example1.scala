@@ -23,21 +23,21 @@ object Example1 extends MainApp {
 
   // 以方法方式定义一个函数
   {
-      val factor = 3
+    val factor = 3
 
-      def closures(i: Int): Int = factor * i
+    def closures(i: Int): Int = factor * i
 
-      val closuresFunc = closures(1)
-      logger.info(s"closuresFunc=$closuresFunc")
-    }
+    val closuresFunc = closures(1)
+    logger.info(s"closuresFunc=$closuresFunc")
+  }
 
-    // 以方法方式定义一个函数 ， 一旦 closures 函数初始化后就不依赖 i 变量 ，此时 factor 是未知的，一旦 factor 被捕获函数即 "关闭"
-    {
-      def closures(i: Int) = (factor: Int) => factor * i
+  // 以方法方式定义一个函数 ， 一旦 closures 函数初始化后就不依赖 i 变量 ，此时 factor 是未知的，一旦 factor 被捕获函数即 "关闭"
+  {
+    def closures(i: Int) = (factor: Int) => factor * i
 
-      val closures1 = closures(1)
-      val closures2 = closures(1)
-      logger.info(s"closures1=${closures1(1)}")
-      logger.info(s"closures2=${closures2(2)}")
-    }
+    val closures1 = closures(1)
+    val closures2 = closures(1)
+    logger.info(s"closures1=${closures1(1)}")
+    logger.info(s"closures2=${closures2(2)}")
+  }
 }

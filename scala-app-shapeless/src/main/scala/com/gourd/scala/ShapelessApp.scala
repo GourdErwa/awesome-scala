@@ -14,20 +14,20 @@ object ShapelessApp {
     logger.info("hello")
   }
 
-  case class Employee(name: String, number: Int, manager: Boolean)
-
-  case class IceCream(name: String, numCherries: Int, inCone: Boolean)
-
-  def employeeCsv(e: Employee): List[String] = List(e.name, e.number.toString, e.manager.toString)
-
-  def iceCreamCsv(c: IceCream): List[String] = List(c.name, c.numCherries.toString, c.inCone.toString)
-
-  import shapeless._
-
-  val genericEmployee = Generic[Employee].to(Employee("Dave", 123, manager = false))
-  // genericEmployee: String :: Int :: Boolean :: shapeless.HNil = Dave :: 123 :: false :: HNil
-
-  val genericIceCream = Generic[IceCream].to(IceCream("Sundae", 1, inCone = false))
+  //  case class Employee(name: String, number: Int, manager: Boolean)
+  //
+  //  case class IceCream(name: String, numCherries: Int, inCone: Boolean)
+  //
+  //  def employeeCsv(e: Employee): List[String] = List(e.name, e.number.toString, e.manager.toString)
+  //
+  //  def iceCreamCsv(c: IceCream): List[String] = List(c.name, c.numCherries.toString, c.inCone.toString)
+  //
+  //  import shapeless._
+  //
+  //  val genericEmployee = Generic[Employee].to(Employee("Dave", 123, manager = false))
+  //  // genericEmployee: String :: Int :: Boolean :: shapeless.HNil = Dave :: 123 :: false :: HNil
+  //
+  //  val genericIceCream = Generic[IceCream].to(IceCream("Sundae", 1, inCone = false))
   // genericIceCream: String :: Int :: Boolean :: shapeless.HNil = Sundae :: 1 :: false :: HNil
 
   // def genericCsv(gen: String :: Int :: Boolean :: HNil): List[String] =
