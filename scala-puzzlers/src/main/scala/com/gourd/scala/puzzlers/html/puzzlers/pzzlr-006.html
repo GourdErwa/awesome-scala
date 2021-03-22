@@ -9,9 +9,10 @@
     </tr>
     <tr>
         <td><strong>Source</strong></td>
-        <td><a target="_blank"
-               href="http://stackoverflow.com/questions/7040806/when-applying-map-to-a-set-you-sometimes-want-the-result-not-to-be-a-set-but">Stack
-            Overflow</a></td>
+        <td>
+            <a href="http://stackoverflow.com/questions/7040806/when-applying-map-to-a-set-you-sometimes-want-the-result-not-to-be-a-set-but"
+               target="_blank">Stack
+                Overflow</a></td>
     </tr>
     <tr>
         <td><strong>First tested with Scala version</strong></td>
@@ -55,14 +56,14 @@ Int = 2
     </ol>
 </div>
 
-<div id="explanation" class="explanation">
+<div class="explanation" id="explanation">
     <h3>Explanation</h3>
     <p>
         Even though collections.map would appear to map an iterable to
         another "nice" iterable, since the Collections Redesign the type of
         the returned iterable will (usually) match the input type. Which, for
         sets, means...no duplicates.
-        And yes, foldLeft would obviously be a much nicer way to do this <img src="img/smiley.jpg" alt=":)"/>
+        And yes, foldLeft would obviously be a much nicer way to do this <img alt=":)" src="img/smiley.jpg"/>
     </p>
 </div>
 

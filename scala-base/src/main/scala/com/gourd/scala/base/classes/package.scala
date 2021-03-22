@@ -38,9 +38,9 @@ class Point3(x: Int, y: Int)
 // 私有成员和Getter/Setter语法
 ///////////////////////////////////////////////////////////////////////////////////
 class Point4 {
+  private val bound = 100
   private var _x = 0
   private var _y = 0
-  private val bound = 100
 
   // Getter
   def x: Int = _x

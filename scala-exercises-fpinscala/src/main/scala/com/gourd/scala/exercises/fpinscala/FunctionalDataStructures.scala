@@ -16,9 +16,9 @@ object FunctionalDataStructures {
 
   sealed trait List[+A]
 
-  case object Nil extends List[Nothing]
-
   case class Cons[+A](head: A, tail: List[A]) extends List[A]
+
+  case object Nil extends List[Nothing]
 
   logger.info("------------------------> block line [1] <----------------------------")
 

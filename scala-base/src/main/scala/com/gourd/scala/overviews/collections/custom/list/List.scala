@@ -67,8 +67,9 @@ sealed trait List[+A] {
   /** 从头循环删除节点，有函数不为true退出删除操作返回剩余链表 尾递归实现 */
   @tailrec
   final def dropWhile2(f: A => Boolean): List[A] = this match {
-    case _ => this
     case Cons(h, t) if f(h) => t.dropWhile2(f)
+    case Nil => this
+    case Cons(_, _) => this
   }
 
   /** 非尾递归实现 不推荐 请参考 foldLeft */
@@ -151,7 +152,7 @@ object MyApp {
         case _ => 101
       }
     }")
-    logger.info(s"listInt.head=${listInt.head}")
+    logger.info (s"listInt.head=${listInt.head}")
     logger.info(s"listInt.tail=${listInt.tail}")
     logger.info(s"listInt.headOpt(11)=${listInt.headOpt(11)}")
     logger.info(s"listInt.tailOpt(Cons(11, Cons(22, Nil)))=${listInt.tailOpt(Cons(11, Cons(22, Nil)))}")

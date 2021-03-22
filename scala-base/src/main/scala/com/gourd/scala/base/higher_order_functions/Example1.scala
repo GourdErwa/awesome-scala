@@ -29,11 +29,11 @@ object Example1 extends MainApp {
 ///////////////////////////////////////////////////////////////////////////////////
 case class WeeklyWeatherForecast(temperatures: Seq[Double]) {
 
-  private def convertCtoF(temp: Double): Double = temp * 1.8 + 32
-
   // 方法convertCtoF被传入forecastInFahrenheit。这是可以的，因为编译器强制将方法convertCtoF转成了函数x => convertCtoF(x)
   // 注: x是编译器生成的变量名，保证在其作用域是唯一的
   def forecastInFahrenheit: Seq[Double] = temperatures.map(convertCtoF) // <-- passing the method convertCtoF
+
+  private def convertCtoF(temp: Double): Double = temp * 1.8 + 32
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -55,14 +55,14 @@ object SalaryRaiser {
 
   // 注意这三个方法的差异仅仅是提升的比例不同，为了简化代码，其实可以把重复的代码提到一个高阶函数中
   object Simplify {
-    private def promotion(salaries: List[Double], promotionFunction: Double => Double): List[Double] =
-      salaries.map(promotionFunction)
-
     def smallPromotion(salaries: List[Double]): List[Double] =
       promotion(salaries, salary => salary * 1.1)
 
     def bigPromotion(salaries: List[Double]): List[Double] =
       promotion(salaries, salary => salary * math.log(salary))
+
+    private def promotion(salaries: List[Double], promotionFunction: Double => Double): List[Double] =
+      salaries.map(promotionFunction)
 
     def hugePromotion(salaries: List[Double]): List[Double] =
       promotion(salaries, salary => salary * salary)
@@ -76,18 +76,17 @@ object SalaryRaiser {
 // 在这个例子中，返回的匿名函数是(endpoint: String, query: String) => s"https://www.example.com/$endpoint?$query"。
 ///////////////////////////////////////////////////////////////////////////////////
 object ReturnFun {
+  val domainName = "www.example.com"
+  val endpoint = "users"
+  val query = "id=1"
+  val url = getURL(endpoint, query) // "https://www.example.com/users?id=1": String
+
+  def getURL = urlBuilder(ssl = true, domainName)
+
   def urlBuilder(ssl: Boolean, domainName: String): (String, String) => String = {
     val schema = if (ssl) "https://" else "http://"
     (endpoint: String, query: String) => s"$schema$domainName/$endpoint?$query"
   }
-
-  val domainName = "www.example.com"
-
-  def getURL = urlBuilder(ssl = true, domainName)
-
-  val endpoint = "users"
-  val query = "id=1"
-  val url = getURL(endpoint, query) // "https://www.example.com/users?id=1": String
 }
 
 ///////////////////////////////////////////////////////////////////////////////////

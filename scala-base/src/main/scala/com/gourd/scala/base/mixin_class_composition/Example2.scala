@@ -35,9 +35,10 @@ trait RichIterator extends AbsIterator {
 
 object StringIteratorTest extends MainApp {
 
+  val richStringIter = new RichStringIter
+
   // 我们要把StringIterator和RichIterator 中的功能组合成一个类。
   class RichStringIter extends StringIterator("Scala") with RichIterator
 
-  val richStringIter = new RichStringIter
   richStringIter foreach println
 }

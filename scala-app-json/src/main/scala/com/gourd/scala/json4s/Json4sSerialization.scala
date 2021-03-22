@@ -1,13 +1,13 @@
 package com.gourd.scala
 package json4s
 
-import java.text.SimpleDateFormat
-import java.util.Date
-
 import org.json4s.jackson.JsonMethods._
 import org.json4s.jackson.Serialization.{read, write}
 import org.json4s.{DefaultFormats, _}
 import org.slf4j.LoggerFactory
+
+import java.text.SimpleDateFormat
+import java.util.Date
 
 /** Json4sSerialization JSON
   *

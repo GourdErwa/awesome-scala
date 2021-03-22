@@ -18,6 +18,14 @@ object Example1 extends MainApp
 ///////////////////////////////////////////////////////////////////////////////////
 class GraphScala {
 
+  var nodes: List[Node] = Nil // 图形表示为节点列表
+
+  def newNode: Node = {
+    val res = new Node
+    nodes = res :: nodes
+    res
+  }
+
   class Node {
     var connectedNodes: List[Node] = Nil // 存储与其相连的其他节点的列表
 
@@ -26,14 +34,6 @@ class GraphScala {
         connectedNodes = node :: connectedNodes
       }
     }
-  }
-
-  var nodes: List[Node] = Nil // 图形表示为节点列表
-
-  def newNode: Node = {
-    val res = new Node
-    nodes = res :: nodes
-    res
   }
 
   {
@@ -59,6 +59,14 @@ class GraphScala {
 ///////////////////////////////////////////////////////////////////////////////////
 class GraphJava {
 
+  var nodes: List[Node] = Nil // 图形表示为节点列表
+
+  def newNode: Node = {
+    val res = new Node
+    nodes = res :: nodes
+    res
+  }
+
   class Node {
     var connectedNodes: List[GraphJava#Node] = Nil // 存储与其相连的其他节点的列表
 
@@ -67,14 +75,6 @@ class GraphJava {
         connectedNodes = node :: connectedNodes
       }
     }
-  }
-
-  var nodes: List[Node] = Nil // 图形表示为节点列表
-
-  def newNode: Node = {
-    val res = new Node
-    nodes = res :: nodes
-    res
   }
   {
     val graph1: GraphJava = new GraphJava

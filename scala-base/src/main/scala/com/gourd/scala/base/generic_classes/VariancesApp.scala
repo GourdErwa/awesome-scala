@@ -44,14 +44,14 @@ case class Cat(name: String) extends Animal
 case class Dog(name: String) extends Animal
 
 object CovarianceTest extends MainApp {
+  val cats: List[Cat] = List(Cat("Whiskers"), Cat("Tom"))
+  val dogs: List[Dog] = List(Dog("Fido"), Dog("Rex"))
+
   def printAnimalNames(animals: List[Animal]): Unit = {
     animals.foreach { animal =>
       logger.info(animal.name)
     }
   }
-
-  val cats: List[Cat] = List(Cat("Whiskers"), Cat("Tom"))
-  val dogs: List[Dog] = List(Dog("Fido"), Dog("Rex"))
 
   printAnimalNames(cats) // 协变
   // Whiskers

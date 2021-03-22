@@ -14,10 +14,6 @@ trait Logging {
 
   protected var logIdent: String = _
 
-  protected def loggerName: String = getClass.getName
-
-  protected def msgWithLogIdent(msg: String): String = if (logIdent == null) msg else logIdent + msg
-
   def trace(msg: => String): Unit = logger.trace(msgWithLogIdent(msg))
 
   def trace(msg: => String, e: => Throwable): Unit = logger.trace(msgWithLogIdent(msg), e)
@@ -34,6 +30,8 @@ trait Logging {
 
   def info(msg: => String, e: => Throwable): Unit = logger.info(msgWithLogIdent(msg), e)
 
+  protected def msgWithLogIdent(msg: String): String = if (logIdent == null) msg else logIdent + msg
+
   def warn(msg: => String): Unit = logger.warn(msgWithLogIdent(msg))
 
   def warn(msg: => String, e: => Throwable): Unit = logger.warn(msgWithLogIdent(msg), e)
@@ -45,6 +43,8 @@ trait Logging {
   def fatal(msg: => String): Unit = logger.error(Logging.FatalMarker, msgWithLogIdent(msg))
 
   def fatal(msg: => String, e: => Throwable): Unit = logger.error(Logging.FatalMarker, msgWithLogIdent(msg), e)
+
+  protected def loggerName: String = getClass.getName
 }
 
 private object Logging {

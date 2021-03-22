@@ -22,10 +22,11 @@ object Example1 extends MainApp {
     def next(): A
   }
 
+  // 特质（trait）和类（class）可以用sealed标记为密封的，这意味着其所有子类都必须与之定义在相同文件中，从而保证所有子类型都是已知的
+  sealed abstract class Furniture
+
   class IntIterator(to: Int) extends Iterator[Int] {
     private var current = 0
-
-    override def hasNext: Boolean = current < to
 
     override def next(): Int = {
       if (hasNext) {
@@ -34,11 +35,9 @@ object Example1 extends MainApp {
         t
       } else 0
     }
+
+    override def hasNext: Boolean = current < to
   }
-
-
-  // 特质（trait）和类（class）可以用sealed标记为密封的，这意味着其所有子类都必须与之定义在相同文件中，从而保证所有子类型都是已知的
-  sealed abstract class Furniture
 
   case class Couch() extends Furniture
 

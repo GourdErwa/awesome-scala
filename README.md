@@ -1,12 +1,16 @@
 # scala 入门进阶、常用类库学习
+
 ![JDK](https://img.shields.io/badge/JDK-11-brightgreen.svg?style=flat-square)
 ![Scala](https://img.shields.io/badge/Scala-2.13.0-brightgreen.svg?style=flat-square)
 ![Gradle](https://img.shields.io/badge/Gradle-5.6.2-brightgreen.svg?style=flat-square)
 [![License](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://en.wikipedia.org/wiki/MIT_License)
 [![DepShield Badge](https://depshield.sonatype.org/badges/GourdErwa/scala-advanced/depshield.svg)](https://depshield.github.io)
 [![CodeFactor](https://www.codefactor.io/repository/github/gourderwa/scala-advanced/badge)](https://www.codefactor.io/repository/github/gourderwa/scala-advanced)
+
 # 项目结构
+
 ## 模块说明
+
 |模块|说明|目的|完成|
 |:---|:---|:---|:---|
 |[scala-base](./scala-base)|语言核心特性、特性深度分析示例、常用函数|入门|√|
@@ -21,11 +25,14 @@
 |[scala-resources-book](./scala-resources-book)|scala-书籍|提升|√|
 
 ## 编码风格
+
 * 模块内容参考`README.md`文件声明
 * 代码包内容参考 `package` 注释声明
 
 # 参考资源
+
 ## 官方文档
+
 * [scala-lang-语言核心特性](https://docs.scala-lang.org/tour/tour-of-scala.html)
 * [scala-lang-特性深度分析](https://docs.scala-lang.org/overviews)
 * [scala-lang-java基础快速快速入门](https://docs.scala-lang.org/tutorials/scala-for-java-programmers.html)
@@ -35,7 +42,9 @@
 * [scala-lang-常见问题及答案](https://docs.scala-lang.org/tutorials/FAQ/index.html)
 
 ## 学习资源
+
 ### 在线文档
+
 * [可视化了解Scala概念和功能的指南](https://superruzafa.github.io/visual-scala-reference/)
 * [twitter-effective-scala](http://twitter.github.io/effectivescala/index-cn.html)
 * [databricks-scala-style-guide](https://github.com/databricks/scala-style-guide)
@@ -43,11 +52,14 @@
 * [underscore.io-开源scala相关书籍](https://underscore.io/training/)
 
 ### 在线学习资源
+
 [Scala-Exercises-在线学习scala不同的类库使用](https://www.scala-exercises.org/)
 
 # 联系
+
 * QQ 群：348527861
 * email：gourderwa@163.com
 
 # License
+
 [MIT license](https://en.wikipedia.org/wiki/MIT_License) 许可

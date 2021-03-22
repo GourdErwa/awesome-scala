@@ -123,11 +123,10 @@ object Example1 extends MainApp {
   // 提取器对象（extractor objects）中的unapply方法来定义非案例类对象的匹配
   ///////////////////////////////////////////////////////////////////////////////////
   {
-    import scala.util.Random
 
     object CustomerID {
 
-      def apply(name: String) = s"$name--${Random.nextLong}"
+      def apply(name: String) = s"$name--"
 
       def unapply(customerID: String): Option[String] = {
         val stringArray: Array[String] = customerID.split("--")

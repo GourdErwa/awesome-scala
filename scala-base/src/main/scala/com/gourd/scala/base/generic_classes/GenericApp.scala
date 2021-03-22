@@ -12,13 +12,13 @@ class Stack[A] {
 
   def push(x: A): Unit = elements = x :: elements
 
-  def peek: A = elements.head
-
   def pop(): A = {
     val currentTop = peek
     elements = elements.tail
     currentTop
   }
+
+  def peek: A = elements.head
 }
 
 class Fruit

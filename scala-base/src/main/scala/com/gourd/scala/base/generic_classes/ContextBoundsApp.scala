@@ -23,9 +23,10 @@ import scala.reflect.ClassTag
   */
 object ContextBoundsApp extends MainApp {
 
+  val ints = mkArray(1, 2, 3)
+
   def mkArray[T: ClassTag](elems: T*): Array[T] = Array[T](elems: _*)
 
-  val ints = mkArray(1, 2, 3)
   logger.info(s"$ints")
 }
 

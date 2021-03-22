@@ -31,17 +31,17 @@ abstract class IntSeqBuffer extends SeqBuffer {
 }
 
 object Test {
-  def newIntSeqBuf(elem1: Int, elem2: Int): IntSeqBuffer =
-    new IntSeqBuffer {
-      type T = List[U]
-      val element = List(elem1, elem2)
-    }
-
   def main(args: Array[String]): Unit = {
     val buf = newIntSeqBuf(7, 8)
     println("length = " + buf.length)
     println("content = " + buf.element)
   }
+
+  def newIntSeqBuf(elem1: Int, elem2: Int): IntSeqBuffer =
+    new IntSeqBuffer {
+      type T = List[U]
+      val element = List(elem1, elem2)
+    }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -61,6 +61,8 @@ class IntSeqBuf1 extends SeqBuffer1[Int, List[Int]] {
 
 object Test1 extends MainApp {
 
+  val buf: SeqBuffer1[Int, Seq[Int]] = newIntSeqBuf1(7, 8)
+
   // 需要注意的是为了隐藏从方法newIntSeqBuf返回的对象的具体序列实现的类型，这里的型变标号（+T <: Seq[U]）是必不可少的。
   // 此外要说明的是，有些情况下用类型参数替换抽象类型是行不通的。
   def newIntSeqBuf1(e1: Int, e2: Int): SeqBuffer1[Int, Seq[Int]] =
@@ -68,7 +70,6 @@ object Test1 extends MainApp {
       override val element = List(e1, e2)
     }
 
-  val buf: SeqBuffer1[Int, Seq[Int]] = newIntSeqBuf1(7, 8)
   println("length = " + buf.length)
   println("content = " + buf.element)
 }
